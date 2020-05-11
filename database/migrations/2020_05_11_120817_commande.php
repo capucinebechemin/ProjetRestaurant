@@ -21,7 +21,6 @@ class Commande extends Migration
             $table->bigInteger('quantite');
             $table->timestamp('heure_commande')->default(null);
 
-        
 
             $table->boolean('reception');
 

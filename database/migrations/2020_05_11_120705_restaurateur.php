@@ -11,11 +11,12 @@ class Restaurateur extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('restaurateur', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->text('nom_restaurant');
             $table->text('logo');
             $table->text('adresse_mail_contact');
@@ -32,6 +33,7 @@ class Restaurateur extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('restaurateur');
