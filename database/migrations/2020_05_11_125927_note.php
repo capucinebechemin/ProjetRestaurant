@@ -39,6 +39,6 @@ class Note extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('note');
     }
 }

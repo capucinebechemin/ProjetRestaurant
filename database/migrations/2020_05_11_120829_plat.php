@@ -34,6 +34,6 @@ class Plat extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('plat');
     }
 }
