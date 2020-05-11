@@ -11,6 +11,7 @@ class Note extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('note', function (Blueprint $table) {
