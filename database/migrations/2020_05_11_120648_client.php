@@ -13,7 +13,18 @@ class Client extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('client', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('user_id');
+            $table->text('prenom');
+            $table->text('nom');
+            $table->text('adresse');
+            $table->float('solde');
+
+            /*$table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');*/
+        });
     }
 
     /**

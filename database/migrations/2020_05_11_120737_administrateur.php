@@ -13,7 +13,14 @@ class Administrateur extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('administrateur', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('user_id');
+
+            /*$table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');*/
+        });
     }
 
     /**

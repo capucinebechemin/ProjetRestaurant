@@ -13,7 +13,18 @@ class Restaurateur extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('restaurateur', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('user_id');
+            $table->text('nom_restaurant');
+            $table->text('logo');
+            $table->text('adresse_mail_contact');
+            $table->text('adresse');
+
+            /*$table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');*/
+        });
     }
 
     /**
