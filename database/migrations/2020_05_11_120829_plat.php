@@ -21,9 +21,9 @@ class Plat extends Migration
             $table->integer('prix');
             $table->text('photo')->nullable();
 
-            /*$table->foreign('id_retaurateur')->references('id')->on('retaurateur')
+            $table->foreign('id_retaurateur')->references('id')->on('retaurateur')
                 ->onDelete('restrict')
-                ->onUpdate('restrict');*/
+                ->onUpdate('restrict');
         });
     }
 

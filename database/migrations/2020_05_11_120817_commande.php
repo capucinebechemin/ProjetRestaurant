@@ -20,18 +20,18 @@ class Commande extends Migration
             $table->bigInteger('id_plat');
             $table->bigInteger('quantite');
 
-            $table->timestamp('heure_commande')->default(null);;
-            $table->timestamp('heure_livraison')->default(null);;
+            $table->timestamp('heure_commande')->default(null);
+            $table->timestamp('heure_livraison')->default(null);
 
             $table->boolean('reception');
 
-            /*$table->foreign('id_client')->references('id')->on('client')
+            $table->foreign('id_client')->references('id')->on('client')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 
             $table->foreign('id_plat')->references('id')->on('plat')
                 ->onDelete('restrict')
-                ->onUpdate('restrict');*/
+                ->onUpdate('restrict');
         });
     }
 
