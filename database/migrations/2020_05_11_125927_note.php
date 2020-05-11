@@ -16,19 +16,12 @@ class Note extends Migration
     {
         Schema::create('note', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_plat');
-            $table->bigInteger('id_client');
-
+            $table->unsignedBigInteger('id_plat');
+            $table->unsignedBigInteger('id_client');
             $table->integer('note')->nullable();
             $table->text('avis')->nullable();
 
-            $table->foreign('id_plat')->references('id')->on('plat')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-
-            $table->foreign('id_client')->references('id')->on('client')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+           
         });
     }
 

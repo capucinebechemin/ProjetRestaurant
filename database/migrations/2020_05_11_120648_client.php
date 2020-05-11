@@ -15,15 +15,16 @@ class Client extends Migration
     {
         Schema::create('client', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->text('prenom');
             $table->text('nom');
             $table->text('adresse');
             $table->float('solde');
-
+/*
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
+                */
         });
     }
 
