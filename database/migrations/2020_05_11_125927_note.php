@@ -18,17 +18,10 @@ class Note extends Migration
             $table->id();
             $table->unsignedBigInteger('id_plat');
             $table->unsignedBigInteger('id_client');
-
             $table->integer('note')->nullable();
             $table->text('avis')->nullable();
 
-            $table->foreign('id_plat')->references('id')->on('plat')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-
-            $table->foreign('id_client')->references('id')->on('client')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+           
         });
     }
 

@@ -20,10 +20,11 @@ class Client extends Migration
             $table->text('nom');
             $table->text('adresse');
             $table->float('solde');
-
+/*
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
+                */
         });
     }
 

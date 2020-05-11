@@ -15,22 +15,15 @@ class Commande extends Migration
     {
         Schema::create('commande', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_client');
-
-            $table->bigInteger('id_plat');
+            $table->unsignedBigInteger('id_client');
+            $table->unsignedBigInteger('id_plat');
             $table->bigInteger('quantite');
             $table->timestamp('heure_commande')->default(null);
 
 
             $table->boolean('reception');
 
-            $table->foreign('id_client')->references('id')->on('client')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-
-            $table->foreign('id_plat')->references('id')->on('plat')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+      
         });
     }
 

@@ -22,9 +22,7 @@ class Restaurateur extends Migration
             $table->text('adresse_mail_contact');
             $table->text('adresse');
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+         
         });
     }
 
