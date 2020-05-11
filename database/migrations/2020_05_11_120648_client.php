@@ -21,9 +21,9 @@ class Client extends Migration
             $table->text('adresse');
             $table->float('solde');
 
-            /*$table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('restrict')
-                ->onUpdate('restrict');*/
+                ->onUpdate('restrict');
         });
     }
 
@@ -34,6 +34,6 @@ class Client extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('client');
     }
 }

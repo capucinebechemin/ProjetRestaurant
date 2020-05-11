@@ -21,13 +21,13 @@ class Note extends Migration
             $table->integer('note')->nullable();
             $table->text('avis')->nullable();
 
-            /*$table->foreign('id_plat')->references('id')->on('plat')
+            $table->foreign('id_plat')->references('id')->on('plat')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 
             $table->foreign('id_client')->references('id')->on('client')
                 ->onDelete('restrict')
-                ->onUpdate('restrict');*/
+                ->onUpdate('restrict');
         });
     }
 
@@ -38,6 +38,6 @@ class Note extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('note');
     }
 }

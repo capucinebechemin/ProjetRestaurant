@@ -17,9 +17,9 @@ class Administrateur extends Migration
             $table->id();
             $table->bigInteger('user_id');
 
-            /*$table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('restrict')
-                ->onUpdate('restrict');*/
+                ->onUpdate('restrict');
         });
     }
 
@@ -30,6 +30,6 @@ class Administrateur extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('administrateur');
     }
 }
