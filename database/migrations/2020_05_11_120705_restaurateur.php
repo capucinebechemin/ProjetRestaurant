@@ -16,13 +16,11 @@ class Restaurateur extends Migration
     {
         Schema::create('restaurateur', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+
             $table->text('nom_restaurant');
             $table->text('logo');
             $table->text('adresse_mail_contact');
             $table->text('adresse');
-
-         
         });
     }
 

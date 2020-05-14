@@ -4,23 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Note extends Migration
+class UpdatePlat extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-
     public function up()
     {
-        Schema::create('note', function (Blueprint $table) {
-            $table->id();
-
-            $table->integer('note')->nullable();
-            $table->text('avis')->nullable();
-
-           
+        Schema::table('plat', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_restaurateur');
+            $table->foreign('id_restaurateur')->references('id')->on('restaurateur');
         });
     }
 
@@ -31,6 +26,6 @@ class Note extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('note');
+
     }
 }

@@ -15,8 +15,7 @@ class Commande extends Migration
     {
         Schema::create('commande', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_client');
-            $table->unsignedBigInteger('id_plat');
+
             $table->bigInteger('quantite');
             $table->timestamp('heure_commande')->default(null);
 

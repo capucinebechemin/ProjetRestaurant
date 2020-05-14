@@ -15,7 +15,6 @@ class Plat extends Migration
     {
         Schema::create('plat', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_restaurateur');
             $table->text('nom');
             $table->integer('prix');
             $table->text('photo')->nullable();
