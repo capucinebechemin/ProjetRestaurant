@@ -18,8 +18,6 @@ class Plat extends Migration
             $table->text('nom');
             $table->integer('prix');
             $table->text('photo')->nullable();
-
-        
         });
     }
 
