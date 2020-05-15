@@ -7,16 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     protected $fillable = [
-        'prenom', 'nom', 'adresse', 'solde','id_user'
+        'prenom', 'nom', 'adresse', 'solde', 'id_user'
     ];
-
 
     public function client_user()
     {
-        # la relation inverse se déclare grace a la méthode "hasMany", qui ne prend cette fois en paramètre, que le nom du model "A"
-        return $this->belongsTo(users::class, "id_user");
+        return $this->belongsTo(user::class, "id_user");
     }
 
+    public function commande_id()
+    {
+        return $this->hasMany(commande::class);
+    }
 
-
+    public function note_id()
+    {
+        return $this->hasMany(note::class);
+    }
 }

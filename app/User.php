@@ -39,7 +39,16 @@ class User extends Authenticatable
 
     public function client_id()
     {
-        # BelongsTo doit prendre en premier paramètre le nom du model A, puis en second paramètre, le nom du champs dans le modèle courant lié avec le model A grâce à sa foreign key
         return $this->hasMany(client::class);
+    }
+
+    public function restaurateur_id()
+    {
+        return $this->hasMany(restaurateur::class);
+    }
+
+    public function administrateur_id()
+    {
+        return $this->hasMany(administrateur::class);
     }
 }
