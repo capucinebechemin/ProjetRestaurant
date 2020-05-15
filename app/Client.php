@@ -17,6 +17,7 @@ class Client extends Model
         return $this->belongsTo(users::class, "id_user");
     }
 
+    
 
 
 }
