@@ -11,6 +11,7 @@ class UpdateRestaurateur extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::table('restaurateur', function (Blueprint $table) {
