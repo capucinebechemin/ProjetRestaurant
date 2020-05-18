@@ -62,11 +62,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">Vous êtes :</label>
+                            <label for="role" class="col-md-4 col-form-label">{{ __('role') }}</label>
 
-                            <select class="form-control col-md-6">
-                                <option id="role-client" type="checkbox"  value="Client">Client</option>
-                                <option id="role-restaurateur" type="checkbox" value="Restaurateur">Restaurateur</option>
+                            <select name="role" class="form-control col-md-6">
+                                <option value="client">Client</option>
+                                <option value="restaurateur">Restaurateur</option>
                             </select>
 
                         </div>

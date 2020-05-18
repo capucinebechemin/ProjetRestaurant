@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = \Auth::user();
+
+        if ($user->role == 'client'){
+            return view('clienthome', compact('user'));
+        }
+        elseif ($user->role == 'restaurateur'){
+            return view('restaurateurhome', compact('user'));
+        }
+        elseif ($user->role == 'administrateur') {
+            return view('home', compact('user'));
+        }
     }
 }
