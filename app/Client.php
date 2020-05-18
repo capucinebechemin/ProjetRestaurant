@@ -24,4 +24,5 @@ class Client extends Model
     {
         return $this->hasMany(note::class);
     }
+    ///pomm
 }
