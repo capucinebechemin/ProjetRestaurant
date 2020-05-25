@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Client;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Restaurateur;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -36,6 +38,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('guest');
@@ -72,5 +75,31 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => $data['role']
         ]);
+    }
+
+    protected function createPerson(array $data)
+    {
+        dd("yo");
+        $user = \Auth::user();
+
+        if ($data['role'] == '1'){
+            return Client::create([
+                'prenom' => $data['prenomC'],
+                'nom' => $data['nomC'],
+                'adresse' => $data['adressePostaleC'],
+                'id_user' => $user->id
+            ]);
+        }elseif ($data['role'] == '2') {
+            return Restaurateur::create([
+                'nom_restaurant' => $data['nomR'],
+                'logo' => $data['logoR'],
+                'adresse_mail_contact' => $data['adresseContactR'],
+                'adresse' => $data['adressePostaleR'],
+                'id_user' => $user->id
+            ]);
+        }
+
+        else{return $this;}
+
     }
 }

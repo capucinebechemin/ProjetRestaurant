@@ -1,87 +1,135 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __("S'inscrire") }}</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __("S'inscrire") }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom frgvbhj') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('email')
+                                    @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                @error('password')
+                                    @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmer Mdp') }}</label>
+                            <div class="form-group row">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmer Mdp') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Vous êtes') }}</label>
+                            <div id="labelselectrole" class="form-group row">
+                                <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Vous êtes') }}</label>
 
-                            <select name="role" class="form-control col-md-6">
-                                <option value="client">Client</option>
-                                <option value="restaurateur">Restaurateur</option>
-                            </select>
+                                <select name="role" id="lerole" class="form-control col-md-6">
+                                    <option value="">__</option>
+                                    <option value="1">Client</option>
+                                    <option value="2">Restaurateur</option>
+                                </select>
 
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
                             </div>
-                        </div>
-                    </form>
+
+                            <div id="divInfoClient" class="form-group" style="display: none;">
+                                <label>{{__('Nom')}}</label>
+                                <input name="nomC" class="form-control" type="text">
+
+                                <label>{{__('Prenom')}}</label>
+                                <input name="prenomC" class="form-control" type="text">
+
+
+                                <label>{{__('Adresse Postale')}}</label>
+                                <input name="adressePostaleC" class="form-control" type="text">
+                            </div>
+
+                            <div id="divInfoResto" class="form-group" style="display: none;">
+                                <label for="restoNom">{{__('Nom du Restaurant')}}</label>
+                                <input name="nomR" class="form-control" type="text">
+
+                                <label for="restoLogo">{{__('Logo')}}</label>
+                                <input name="logoR" class="form-control" type="text">
+
+                                <label for="restoContact">{{__('Adresse e-mail de contact')}}</label>
+                                <input name="adresseContactR" class="form-control" type="text">
+
+
+                                <label for="restoAddresse">{{__('Adresse Postale')}}</label>
+                                <input name="adressePostaleR" class="form-control" type="text">
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __("S'inscrire") }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+@endsection
+@section('js')
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#lerole").on('change', function(){
+                if ($(this).val() == "1") {
+                    $("#divInfoClient").slideDown();
+                    $("#divInfoResto").slideUp();
+                } else if ($(this).val() == "2") {
+                    $("#divInfoResto").slideDown();
+                    $("#divInfoClient").slideUp();
+                } else {
+                    $("#divInfoResto").slideUp();
+                    $("#divInfoClient").slideUp();
+                }
+            });
+        });
+    </script>
 @endsection

@@ -26,13 +26,13 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
 
-        if ($user->role == 'client'){
+        if ($user->role == '1'){
             return view('clienthome', compact('user'));
         }
-        elseif ($user->role == 'restaurateur'){
+        elseif ($user->role == '2'){
             return view('restaurateurhome', compact('user'));
         }
-        elseif ($user->role == 'administrateur') {
+        elseif ($user->role == '3') {
             return view('home', compact('user'));
         }
     }
