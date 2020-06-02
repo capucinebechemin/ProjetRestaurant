@@ -10,6 +10,10 @@
                     <div class="card-body">
                         <p>Bienvenue cher restaurateur</p>
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-12"><img src="{{ asset('storage/' . $resto->logo) }}" class="img-thumbnail"></div>
+                    </div>
 
                 </div>
             </div>
