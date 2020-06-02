@@ -19,7 +19,7 @@
                     <div class='info-resto'>
                     <ul>
                         <li>
-                            <p>{{$profile_resto->adresse}}</p>  
+                            <p>{{$resto->adresse}}</p>
                         </li>
                     </ul>
                     </div>

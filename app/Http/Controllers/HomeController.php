@@ -6,7 +6,6 @@ use App\Client;
 use App\Restaurateur;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
-use App\Restaurateur;
 
 class HomeController extends Controller
 {
@@ -28,12 +27,6 @@ class HomeController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        //$profile_resto = Restaurateur::all();
-       $profile_resto = Restaurateur::where('id_user',$user->id)->first();
-    //dd($profile_resto);
-
-        // Entreprise::where('id', $entrepriseId)->with('contact')->first()
-        //Entreprise::where('id', $contact->entreprise_id);
 
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
@@ -41,7 +34,7 @@ class HomeController extends Controller
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();
-            return view('restaurateurhome', compact('resto','profile_resto'));
+            return view('restaurateurhome', compact('resto'));
         }
         elseif ($user->role == '3') {
             return view('home', compact('user'));
