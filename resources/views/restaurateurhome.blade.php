@@ -11,6 +11,17 @@
                         <p>Bienvenue cher restaurateur</p>
                     </div>
 
+
+                    <div class='info-resto'>
+                    <ul>
+                        <li>
+                            <p>{{$profile_resto->adresse}}</p>  
+                        </li>
+                    </ul>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
