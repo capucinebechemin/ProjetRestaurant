@@ -28,20 +28,16 @@ class HomeController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        //$profile_resto = Restaurateur::all();
-       $profile_resto = Restaurateur::where('id_user',$user->id)->first();
-    //dd($profile_resto);
-
-        // Entreprise::where('id', $entrepriseId)->with('contact')->first()
-        //Entreprise::where('id', $contact->entreprise_id);
+       $resto = Restaurateur::where('id_user', $user->id)->first();
+   
 
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
             return view('clienthome', compact('client'));
         }
         elseif ($user->role == '2'){
-            $resto = Restaurateur::where('id_user', $user->id)->first();
-            return view('restaurateurhome', compact('resto','profile_resto'));
+            
+            return view('restaurateurhome', compact('resto'));
         }
         elseif ($user->role == '3') {
             return view('home', compact('user'));
