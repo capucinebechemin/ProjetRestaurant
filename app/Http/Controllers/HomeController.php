@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
+use App\Restaurateur;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use App\Restaurateur;
@@ -34,10 +36,12 @@ class HomeController extends Controller
         //Entreprise::where('id', $contact->entreprise_id);
 
         if ($user->role == '1'){
-            return view('clienthome', compact('user'));
+            $client = Client::where('id_user', $user->id)->first();
+            return view('clienthome', compact('client'));
         }
         elseif ($user->role == '2'){
-            return view('restaurateurhome', compact('user','profile_resto'));
+            $resto = Restaurateur::where('id_user', $user->id)->first();
+            return view('restaurateurhome', compact('resto','profile_resto'));
         }
         elseif ($user->role == '3') {
             return view('home', compact('user'));

@@ -91,7 +91,7 @@
                                 <input name="nomR" class="form-control" type="text">
 
                                 <label for="restoLogo">{{__('Logo')}}</label>
-                                <input name="logoR" class="form-control py-1 d-flex" type="file" accept="image/png, image/jpeg">
+                                <input name="logoR" class="py-1 d-flex" type="file" accept="image/png, image/jpeg">
 
                                 <label for="restoContact">{{__('Adresse e-mail de contact')}}</label>
                                 <input name="adresseContactR" class="form-control" type="text">
@@ -123,10 +123,18 @@
             $("#lerole").on('change', function(){
                 if ($(this).val() == "1") {
                     $("#divInfoClient").slideDown();
+                    $("#divInfoClient input").attr("required", true);
+
                     $("#divInfoResto").slideUp();
+                    $("#divInfoResto input").attr("required", false);
+
                 } else if ($(this).val() == "2") {
                     $("#divInfoResto").slideDown();
+                    $("#divInfoResto input").attr("required", true);
+
                     $("#divInfoClient").slideUp();
+                    $("#divInfoClient input").attr("required", false);
+
                 } else {
                     $("#divInfoResto").slideUp();
                     $("#divInfoClient").slideUp();

@@ -81,6 +81,7 @@ class RegisterController extends Controller
         ]);
 
         $this->createPerson($data, $user);
+
         return $user;
     }
 
@@ -98,13 +99,18 @@ class RegisterController extends Controller
             return $client->save();
 
         }elseif ($data['role'] == '2') {
-            return Restaurateur::create([
+            $restaurateur = Restaurateur::create([
                 'nom_restaurant' => $data['nomR'],
                 'logo' => $data['logoR'],
                 'adresse_mail_contact' => $data['adresseContactR'],
                 'adresse' => $data['adressePostaleR'],
                 'id_user' => $user->id
             ]);
+
+            $restaurateur->update([
+                'logo'=>$data['logoR']->store('uploads', 'public'),
+            ]);
+            return $restaurateur;
         }
 
         else{return $this;}
