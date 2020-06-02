@@ -10,6 +10,9 @@ class Client extends Model
         'prenom', 'nom', 'adresse', 'solde', 'id_user'
     ];
 
+    protected $table = "client";
+    public $timestamps = false;
+
     public function client_user()
     {
         return $this->belongsTo(user::class, "id_user");

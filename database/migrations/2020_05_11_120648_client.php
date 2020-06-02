@@ -15,7 +15,6 @@ class Client extends Migration
     {
         Schema::create('client', function (Blueprint $table) {
             $table->id();
-
             $table->text('prenom');
             $table->text('nom');
             $table->text('adresse');

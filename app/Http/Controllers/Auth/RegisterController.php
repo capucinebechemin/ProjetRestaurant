@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Stmt\Return_;
 
 class RegisterController extends Controller
 {
@@ -50,6 +51,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -57,6 +59,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required'],
+            'restoLogo' => ['require', 'image'],
         ]);
     }
 
@@ -69,26 +72,31 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return User::create([
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role']
         ]);
+
+        $this->createPerson($data, $user);
+        return $user;
     }
 
-    protected function createPerson(array $data)
-    {
-        dd("yo");
-        $user = \Auth::user();
 
+    protected function createPerson(array $data, $user)
+    {
         if ($data['role'] == '1'){
-            return Client::create([
-                'prenom' => $data['prenomC'],
-                'nom' => $data['nomC'],
-                'adresse' => $data['adressePostaleC'],
-                'id_user' => $user->id
-            ]);
+            $client = new Client();
+            $client->prenom = $data['prenomC'];
+            $client->nom = $data['nomC'];
+            $client->solde = $data['soldeC'];
+            $client->adresse = $data['adressePostaleC'];
+            $client->id_user=$user->id;
+
+            return $client->save();
+
         }elseif ($data['role'] == '2') {
             return Restaurateur::create([
                 'nom_restaurant' => $data['nomR'],
@@ -100,6 +108,5 @@ class RegisterController extends Controller
         }
 
         else{return $this;}
-
     }
 }

@@ -8,11 +8,11 @@
                     <div class="card-header">{{ __("S'inscrire") }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom frgvbhj') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -79,9 +79,11 @@
                                 <label>{{__('Prenom')}}</label>
                                 <input name="prenomC" class="form-control" type="text">
 
-
                                 <label>{{__('Adresse Postale')}}</label>
                                 <input name="adressePostaleC" class="form-control" type="text">
+
+                                <label>{{__('Solde')}}</label>
+                                <input name="soldeC" class="form-control" type="number">
                             </div>
 
                             <div id="divInfoResto" class="form-group" style="display: none;">
@@ -89,7 +91,7 @@
                                 <input name="nomR" class="form-control" type="text">
 
                                 <label for="restoLogo">{{__('Logo')}}</label>
-                                <input name="logoR" class="form-control" type="text">
+                                <input name="logoR" class="form-control py-1 d-flex" type="file" accept="image/png, image/jpeg">
 
                                 <label for="restoContact">{{__('Adresse e-mail de contact')}}</label>
                                 <input name="adresseContactR" class="form-control" type="text">
@@ -97,7 +99,7 @@
 
                                 <label for="restoAddresse">{{__('Adresse Postale')}}</label>
                                 <input name="adressePostaleR" class="form-control" type="text">
-                            </div>
+                        </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
