@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/restaurateur/profile', 'controllerRestaurateur@profile')->name('restaurateur.profile');
+Route::put('/restaurateur/update', 'controllerRestaurateur@update')->name('restaurateur.update');
