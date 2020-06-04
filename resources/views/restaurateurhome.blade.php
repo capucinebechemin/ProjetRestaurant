@@ -9,7 +9,8 @@
 
                     <div class="card-body">
                         <p>Bienvenue cher restaurateur</p>
-                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile">Gestion profil</a>
+                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile">Gestion profile</a>
+                        <a href="{{ route('restaurateur.plat') }}" title="plat">Création plat</a>
                     </div>
                     <div class="row">
                         <div class="col-12"><img src="{{ asset('storage/' . $resto->logo) }}" class="img-thumbnail" alt=""></div>

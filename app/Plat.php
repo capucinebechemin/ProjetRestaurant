@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plat extends Model
 {
+    public $table = "plat";
+    public $timestamps = false;
+
     protected $fillable = [
         'nom', 'prix', 'photo', 'id_restaurateur'
     ];

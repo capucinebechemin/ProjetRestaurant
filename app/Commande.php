@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
+
+    public $table = "commande";
+    
     protected $fillable = [
         'quantite', 'heure_commande', 'reception', 'id_client', 'id_plat'
     ];
