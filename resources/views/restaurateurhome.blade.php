@@ -9,10 +9,10 @@
 
                     <div class="card-body">
                         <p>Bienvenue cher restaurateur</p>
-                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile">Gestion profile</a>
+                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile">Gestion profil</a>
                     </div>
                     <div class="row">
-                        <div class="col-12"><img src="{{ asset('storage/' . $resto->logo) }}" class="img-thumbnail"></div>
+                        <div class="col-12"><img src="{{ asset('storage/' . $resto->logo) }}" class="img-thumbnail" alt=""></div>
                     </div>
 
 
@@ -28,9 +28,6 @@
                             <li>
                             <p>Mail: {{$resto->adresse_mail_contact}}</p>
                             </li>
-                            <li>
-                            <p>Id user: {{$resto->id_user}}</p>
-                            </li> 
                     </ul>
                    
             </div>
