@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>CoupFaim</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -87,6 +87,17 @@
                 <div class="links">
                     <p>Coup Faim fait le lien entre les restaurants et vous pour le bonheur de vos papilles !</p>
                 </div>
+
+
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+                    @foreach($restaurants as $resto)
+                    <div class="col-sm">
+                        <p>{{$resto->nom_restaurant}}</p>
+                        <img src="{{asset('storage/' . $resto->logo)}}" alt="{{$resto->nom_restaurant}}" style= "width: 50%">
+                    </div>
+                    @endforeach
+                </div>
+
             </div>
         </div>
     </body>

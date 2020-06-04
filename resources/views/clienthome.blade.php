@@ -8,7 +8,12 @@
                     <div class="card-header">Dashboard</div>
 
                     <div class="card-body">
-                        <p>Bienvenue cher client</p>
+                        <p>Bienvenue {{$client->prenom}} {{$client->nom}}</p>
+                        <p>Vous disposez de {{$client->solde}}€</p>
+                    </div>
+
+                    <div>
+
                     </div>
 
                 </div>
