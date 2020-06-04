@@ -24,7 +24,6 @@ public function update(Request $request){
         'logo' => 'required',
         'mail' => 'required|email',
         'adresse' => 'required',
-
     ]);
 
     $user = \Auth::user();
@@ -56,21 +55,21 @@ public function plat(){
 
 public function store(Request $request) {
 
-// Vérification du contenu
-$validatedData = $request->validate([
-    'nom' => 'required',
-    'prix' => 'required',
-    'photo' => 'required',
-    'id_restaurateur' => 'required',
-]);       
+    $request->validate([
+        'nom' => 'required',
+        'prix' => 'required',
+        'photo' => 'required',
+        'id_restaurateur' => 'required',
+    ]);
 
-$plat = new Plat();
-$plat->nom = $request->get('nom');
-$plat->prix = $request->get('prix');
-$plat->photo = $request->get('photo');
-$plat->id_restaurateur = $request->get('id_restaurateur');
-$plat->save();
-return redirect()->route('home');
+    $plat = new Plat();
+    $plat->nom = $request->get('nom');
+    $plat->prix = $request->get('prix');
+    $plat->photo = $request->get('photo');
+    $plat->id_restaurateur = $request->get('id_restaurateur');
+    $plat->save();
+
+    return redirect()->route('home');
 
 }
 
