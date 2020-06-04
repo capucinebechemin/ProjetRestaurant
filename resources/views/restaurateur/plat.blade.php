@@ -1,31 +1,65 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<title>Création d'un plat</title>
-</head>
-<body>
-    <h1>Création d'un plat</h1>
+@extends('layouts.app')
 
-    <form method="POST" action="{{ route('restaurateur.store') }}">
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __("Création plat") }}</div>
 
-        @csrf
+                    <div class="card-body">
 
-        <label for="nom">Nom du plat</label><br>
-        <input id="nom" type="text" name="nom">
-        <br><br>
-        <label for="prix">Prix du plat</label><br>
-        <input id="prix" type="number" name="prix">
-        <br><br>
-        <label for="photo">Photo</label><br>
-        <input id="photo" type="file" name="photo" accept="image/png, image/jpeg">
-        <input id="id_restaurateur" type="hidden" name="id_restaurateur" value="{{$resto->id}}">
-        <p>{{$resto->id}}</p>
-        <br><br>
+                        <form method="POST" action="{{ route('restaurateur.store') }}" enctype="multipart/form-data">
 
+                            @csrf
+                        
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right" for="nom">Nom du plat</label><br>
+                                <div class="col-md-6">
+                                    <input id="nom" class="form-control @error('nom') is-invalid @enderror" type="text" name="nom" >
+                                    @error('nom')
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>Veuillez remplir ce champ</strong>
+                                    </span>
+                                    @enderror
+                                </div>
 
-        <input type="submit">
-    </form>
+                                <label class="col-md-4 col-form-label text-md-right" for="prix">Prix du plat</label><br>
+                                <div class="col-md-6">
+                                    <input id="prix" class="form-control @error('prix') is-invalid @enderror" type="number" name="prix" >
+                                    @error('prix')
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>Veuillez remplir ce champ</strong>
+                                    </span>
+                                    @enderror
+                                </div>
 
-</body>
-</html>
+                                <label class="col-md-4 col-form-label text-md-right" for="photo">Photo</label><br>
+                                <div class="col-md-6">
+                                    <input id="photo" class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" accept="image/png, image/jpeg">
+                                    @error('photo')
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>Veuillez remplir ce champ</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <input id="id_restaurateur" type="hidden" name="id_restaurateur" value="{{$resto->id}}">
+                               
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __("Valider") }}
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
