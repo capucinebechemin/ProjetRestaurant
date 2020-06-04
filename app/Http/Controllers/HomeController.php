@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Plat;
 use App\Restaurateur;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
@@ -34,7 +35,8 @@ class HomeController extends Controller
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();
-            return view('restaurateurhome', compact('resto'));
+            $plat = Plat::where('id_restaurateur',$resto->id)->get();
+            return view('restaurateurhome', compact('resto','plat'));
         }
         elseif ($user->role == '3') {
             return view('home', compact('user'));

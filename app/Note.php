@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
+
+    public $table = "note";
+    public $timestamps = false;
+    
     protected $fillable = [
         'note', 'avis', 'id_plat', 'id_client'
     ];
