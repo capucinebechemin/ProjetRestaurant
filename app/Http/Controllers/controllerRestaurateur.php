@@ -50,7 +50,7 @@ public function update(Request $request){
 public function plat(){
     $user = \Auth::user();
     $resto = Restaurateur::where('id_user', $user->id)->first();
-    return view('restaurateur.plat',compact('resto') );
+    return view('restaurateur.plat',compact('resto'));
 }
 
 public function store(Request $request) {
@@ -65,8 +65,12 @@ public function store(Request $request) {
     $plat = new Plat();
     $plat->nom = $request->get('nom');
     $plat->prix = $request->get('prix');
-    $plat->photo = $request->get('photo');
+
     $plat->id_restaurateur = $request->get('id_restaurateur');
+
+    $photo = $request->file('photo');
+
+    $plat->photo = $photo->store('uploads', 'public');
     $plat->save();
 
     return redirect()->route('home');
