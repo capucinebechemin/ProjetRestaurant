@@ -3,11 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __("Gestion du profil") }}</div>
-
-                    <div class="card-body">
+            <div class="col-md-12">
+                <div class="modal-title">Gestion du profil</div>
 
                         <form method="POST" action="{{ route('restaurateur.update') }}" enctype="multipart/form-data">
 
@@ -28,7 +25,6 @@
                                 <label class="col-md-4 col-form-label text-md-right" for="logo">Logo</label><br>
                                 <div class="col-md-6">
                                     <input id="logo" class="form-control @error('logo') is-invalid @enderror" type="file" name="logo" accept="image/png, image/jpeg" value="{{$resto->logo}}">
-
                                     @error('logo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>Veuillez remplir ce champ</strong>

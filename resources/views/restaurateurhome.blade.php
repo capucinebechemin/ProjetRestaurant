@@ -3,21 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
+            <div class="col-md-12">
+                    <div class="modal-title">Accueil Restaurateur</div>
 
-                    <div class="card-body">
-                        <p>Bienvenue cher restaurateur</p>
-                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile">Gestion profile</a>
+                <div style="display: flex; flex-direction: row; justify-content: space-between">
+                    <div>
+                        <h2>Bienvenue cher restaurateur</h2>
+                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile">Gestion profil</a>
                         <a href="{{ route('restaurateur.plat') }}" title="plat">Création plat</a>
                     </div>
-                    <div class="row">
-                        <div class="col-12"><img src="{{ asset('storage/' . $resto->logo) }}" class="img-thumbnail" alt=""></div>
+
+                    <div>
+                        <img src="{{ asset('storage/' . $resto->logo) }}" class="img-thumbnail" alt="" style="height: 100px">
                     </div>
+                </div>
 
-
-                    <div class='info-resto'>
+                <div class='info-resto'>
                     <h1>Vos informations</h1>
                     <ul>
                             <li>
@@ -30,7 +31,13 @@
                             <p>Mail: {{$resto->adresse_mail_contact}}</p>
                             </li>
                     </ul>
-                   
+                </div>
+
+                <div>
+                    <h1>Mes Plats</h1>
+
+                    
+                </div>
             </div>
         </div>
     </div>

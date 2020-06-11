@@ -13,8 +13,9 @@ class controllerRestaurateur extends Controller
 public function profile(){
     $user = \Auth::user();
     $resto = Restaurateur::where('id_user', $user->id)->first();
+    $plats = Plat::where('id_restaurteur', $resto->id)->all();
 
-    return view('restaurateur.profile',compact('resto'));
+    return view('restaurateur.profile',compact('resto', 'plats'));
 }
 
 public function update(Request $request){
