@@ -38,7 +38,7 @@
                     </ul>
                     @foreach($plat as $plat)
                     <div class="col-sm">
-                        <p>{{$plat->nom}}</p>
+                        <a href="{{ route('restaurateur.plat_modif', $plat->id) }}" title="{{ $plat->nom }}">{{ $plat->nom }}</a>
                         <img src="{{asset('storage/' . $plat->photo)}}" alt="{{$plat->nom}}" style= "width: 50%">
                     </div>
                     @endforeach

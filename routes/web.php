@@ -24,3 +24,4 @@ Route::get('/restaurateur/profile', 'controllerRestaurateur@profile')->name('res
 Route::put('/restaurateur/update', 'controllerRestaurateur@update')->name('restaurateur.update');
 Route::get('/restaurateur/plat', 'controllerRestaurateur@plat')->name('restaurateur.plat');
 Route::post('/restaurateur/store', 'controllerRestaurateur@store')->name('restaurateur.store');
+//Route::get('/restaurateur/{id}/plat_modif', 'controllerRestaurateur@plat_modif')->name('restaurateur.plat_modif');

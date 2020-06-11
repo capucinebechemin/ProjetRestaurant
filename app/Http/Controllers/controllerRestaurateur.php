@@ -77,5 +77,9 @@ public function store(Request $request) {
 
 }
 
+//public function plat_modif($idplat){
+   
+//}
+
 
 }
