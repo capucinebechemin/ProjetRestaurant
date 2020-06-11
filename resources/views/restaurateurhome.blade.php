@@ -32,20 +32,37 @@
                             <li>
                             <p>Mail: {{$resto->adresse_mail_contact}}</p>
                             </li>
-                            
-                            <li>
-                            <p>Plat:{{$plat[1]}} </p>
-                            </li>
                     </ul>
+                </div>
+                <div>
+                    <h1>Vos Plats</h1>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
+                        @foreach($plats as $plat)
+                            <div style="
+                                         margin: 20px;
+                                         position: relative;
+                                         width: 300px;
+                                         height: 300px;
+                                         overflow: hidden;
+                                         text-align: center">
 
-                    @foreach($plat as $plat)
-                    <div class="col-sm">
-                        <p>{{$plat->nom}}</p>
-                        <img src="{{asset('storage/' . $plat->photo)}}" alt="{{$plat->nom}}" style= "width: 50%">
+                                <span>{{$plat->nom}}<br><b>{{$plat->prix}}€</b></span>
+
+
+                                <img src="{{asset('storage/' . $plat->photo)}}" alt="{{$plat->nom}}"
+                                     style= "
+                                             position: absolute;
+                                             max-height: 70%;
+                                             max-width: 70%;
+                                             top: 50%;
+                                             left: 50%;
+                                             transform: translate( -50%, -50%);">
+
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
-            </div>
-                   
+                </div>
+
             </div>
 
            
