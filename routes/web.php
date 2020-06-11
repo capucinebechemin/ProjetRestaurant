@@ -20,7 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('/client/profile', 'controllerClient@profile')->name('client.profile');
+Route::put('/client/update', 'controllerClient@update')->name('client.update');
+
+
 Route::get('/restaurateur/profile', 'controllerRestaurateur@profile')->name('restaurateur.profile');
 Route::put('/restaurateur/update', 'controllerRestaurateur@update')->name('restaurateur.update');
 Route::get('/restaurateur/plat', 'controllerRestaurateur@plat')->name('restaurateur.plat');
 Route::post('/restaurateur/store', 'controllerRestaurateur@store')->name('restaurateur.store');
+//Route::get('/restaurateur/{id}/plat_modif', 'controllerRestaurateur@plat_modif')->name('restaurateur.plat_modif');
