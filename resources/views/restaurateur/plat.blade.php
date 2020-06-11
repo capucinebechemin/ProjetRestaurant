@@ -3,11 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __("Création plat") }}</div>
+            <div class="col-md-12">
 
-                    <div class="card-body">
+                    <div class="modal-title">{{ __("Création plat") }}</div>
 
                         <form method="POST" action="{{ route('restaurateur.store') }}" enctype="multipart/form-data">
 
@@ -56,7 +54,6 @@
 
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>

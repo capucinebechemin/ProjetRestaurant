@@ -16,13 +16,9 @@
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 100vh;
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
 
             .flex-center {
                 align-items: center;
@@ -60,6 +56,7 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+                margin-top: 60px;
             }
         </style>
     </head>
@@ -88,12 +85,23 @@
                     <p>Coup Faim fait le lien entre les restaurants et vous pour le bonheur de vos papilles !</p>
                 </div>
 
-
-                <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
                     @foreach($restaurants as $resto)
-                    <div class="col-sm">
+                    <div style="
+                             margin: 50px;
+                             position: relative;
+                             width: 300px;
+                             height: 300px;
+                             overflow: hidden;">
                         <p>{{$resto->nom_restaurant}}</p>
-                        <img src="{{asset('storage/' . $resto->logo)}}" alt="{{$resto->nom_restaurant}}" style= "width: 50%">
+                        <img src="{{asset('storage/' . $resto->logo)}}" alt="{{$resto->nom_restaurant}}"
+                             style= "
+                                     position: absolute;
+                                     max-height: 70%;
+                                     max-width: 70%;
+                                     top: 50%;
+                                     left: 50%;
+                                     transform: translate( -50%, -50%);">
                     </div>
                     @endforeach
                 </div>
