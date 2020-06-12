@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class controllerClient extends Controller
 {
@@ -41,6 +42,29 @@ public function update(Request $request){
     $client->id_user = $user->id;
 
     $client->save();
+
+    return redirect()->route('home');
+
+}
+
+   
+public function update_user(Request $request){
+
+    $request->validate([
+        'name' => 'required',
+        //'password' => 'required',
+        
+        
+    ]);
+
+    $user = \Auth::user();
+    $user->name = $request->get('name');
+    //$user->password = $request->get('password');
+    //$password=Hash::make($password);
+    //dd($password);
+
+    $user->save();
+
 
     return redirect()->route('home');
 

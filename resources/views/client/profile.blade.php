@@ -68,6 +68,63 @@
 
                             </div>
                         </form>
+
+
+
+
+
+
+
+
+<form method="POST" action="{{ route('client.update_user') }}" enctype="multipart/form-data">
+
+@csrf
+@method('PUT')
+<div class="form-group row">
+
+
+    <label class="col-md-4 col-form-label text-md-right" for="name">Utilisateur </label><br>
+    <div class="col-md-6">
+        <input id="name" class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{$user->name}}">
+
+        @error('name')
+        <span class="invalid-feedback" role="alert">
+            <strong>Veuillez remplir ce champ</strong>
+        </span>
+        @enderror
+    </div>
+
+
+    <div class="form-group row mb-0">
+        <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-primary">
+                {{ __("Valider") }}
+            </button>
+        </div>
+    </div>
+
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>
