@@ -7,6 +7,7 @@ use App\Plat;
 use App\Restaurateur;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class controllerClient extends Controller
 {
@@ -54,8 +55,30 @@ class controllerClient extends Controller
         $client->id_user = $user->id;
 
         $client->save();
+        }
+        
+public function update_user(Request $request){
 
-        return redirect()->route('home');
+    $request->validate([
+        'name' => 'required',
+        //'password' => 'required',
+        
+        
+    ]);
+
+    $user = \Auth::user();
+    $user->name = $request->get('name');
+    //$user->password = $request->get('password');
+    //$password=Hash::make($password);
+    //dd($password);
+
+    $user->save();
+
+
+    return redirect()->route('home');
+
+}
+
 
     }
 }
