@@ -31,6 +31,7 @@ class HomeController extends Controller
 
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
+            $resto = Restaurateur::all();
             return view('clienthome', compact('client'));
         }
         elseif ($user->role == '2'){

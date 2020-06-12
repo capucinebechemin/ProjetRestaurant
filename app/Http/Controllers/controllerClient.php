@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Plat;
+use App\Restaurateur;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
@@ -12,39 +14,48 @@ class controllerClient extends Controller
 
     }
 
-
-
     public function profile(){
         $user = \Auth::user();
         $client = Client::where('id_user', $user->id)->first(); 
         return view('client.profile',compact('client','user'));
     }
 
+    public function commande($id){
 
-    
-public function update(Request $request){
+        if (\Auth::user()){
+            $user = \Auth::user();
+            $client = Client::where('id_user', $user->id)->first();
+            $resto = Restaurateur::where('id', $id)->first();
+            $plats = Plat::where('id_restaurateur', $id)->get();
 
-    $request->validate([
-        'prenom' => 'required',
-        'nom' => 'required',
-        'adresse' => 'required',
-        'solde' => 'required',
-    ]);
+            return view('client.commande',compact('plats','client','resto'));
+        }else{
+            return view('auth.login');
+        }
 
-    $user = \Auth::user();
-    $client = Client::where('id_user', $user->id)->first();
+    }
 
-    $client->prenom = $request->get('prenom');
-    $client->nom = $request->get('nom');
-    $client->adresse = $request->get('adresse');
-    $client->solde = $request->get('solde');
-    $client->id_user = $user->id;
+    public function update(Request $request){
 
-    $client->save();
+        $request->validate([
+            'prenom' => 'required',
+            'nom' => 'required',
+            'adresse' => 'required',
+            'solde' => 'required',
+        ]);
 
-    return redirect()->route('home');
+        $user = \Auth::user();
+        $client = Client::where('id_user', $user->id)->first();
 
-}
+        $client->prenom = $request->get('prenom');
+        $client->nom = $request->get('nom');
+        $client->adresse = $request->get('adresse');
+        $client->solde = $request->get('solde');
+        $client->id_user = $user->id;
 
+        $client->save();
 
+        return redirect()->route('home');
+
+    }
 }
