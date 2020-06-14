@@ -81,6 +81,8 @@
                     CoupFaim
                 </div>
 
+
+                @if(\Auth::user())
                     @if(\Auth::user()->role == 2)
                         <div class="links">
                             <p>Merci de votre contribution chez Coup'faim, vous pouvez ajouter de nouveau plat dans votre profil pour nous régaler! <br> Vous y trouverez les commandes passée et en attentes de nos clients. N'oubliez pas de confirmer leur envoi. <br>Bonne journée pleine de saveurs!</p>
@@ -88,21 +90,21 @@
                         <div>
                             <img src="{{asset('storage/' . 'uploads/cart.png')}}" style="width: 40%;">
                         </div>
-                        @else
-                            <div class="links">
-                                <p>Coup'faim fait le lien entre les restaurants et vous pour le bonheur de vos papilles !</p>
-                            </div>
-                            <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
-                                @foreach($restaurants as $resto)
-                                    <a href="{{ route('client.commande', $resto->id)}}">
-                                        <div style="
+                    @else
+                        <div class="links">
+                            <p>Coup'faim fait le lien entre les restaurants et vous pour le bonheur de vos papilles !</p>
+                        </div>
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
+                            @foreach($restaurants as $resto)
+                                <a href="{{ route('client.commande', $resto->id)}}">
+                                    <div style="
                                              margin: 50px;
                                              position: relative;
                                              width: 300px;
                                              height: 300px;
                                              overflow: hidden;">
-                                            <p>{{$resto->nom_restaurant}}</p>
-                                            <img src="{{asset('storage/' . $resto->logo)}}" alt="{{$resto->nom_restaurant}}"
+                                        <p>{{$resto->nom_restaurant}}</p>
+                                        <img src="{{asset('storage/' . $resto->logo)}}" alt="{{$resto->nom_restaurant}}"
                                                  style= "
                                                      position: absolute;
                                                      max-height: 70%;
@@ -110,11 +112,40 @@
                                                      top: 50%;
                                                      left: 50%;
                                                      transform: translate( -50%, -50%);">
-                                        </div>
-                                    </a>
-                                @endforeach
-                            </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     @endif
+                @else
+                    <div class="links">
+                        <p>Coup'faim fait le lien entre les restaurants et vous pour le bonheur de vos papilles !</p>
+                        <p>Connectez-vous pour commander</p>
+                    </div>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
+                        @foreach($restaurants as $resto)
+                            <a href="{{ route('client.commande', $resto->id)}}">
+                                <div style="
+                                             margin: 50px;
+                                             position: relative;
+                                             width: 300px;
+                                             height: 300px;
+                                             overflow: hidden;">
+                                    <p>{{$resto->nom_restaurant}}</p>
+                                    <img src="{{asset('storage/' . $resto->logo)}}" alt="{{$resto->nom_restaurant}}"
+                                         style= "
+                                                     position: absolute;
+                                                     max-height: 70%;
+                                                     max-width: 70%;
+                                                     top: 50%;
+                                                     left: 50%;
+                                                     transform: translate( -50%, -50%);">
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+
             </div>
         </div>
     </body>
