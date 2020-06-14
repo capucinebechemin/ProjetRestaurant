@@ -57,7 +57,10 @@
                                              top: 50%;
                                              left: 50%;
                                              transform: translate( -50%, -50%);">
-
+                                             <br>
+                                    <a href="{{ route('restaurateur.delete', $plat->id) }}" title="delete">Supprimer plat</a>
+                                    
+                                    <a href="{{ route('restaurateur.modifier', $plat->id) }}" title="modifier">Modifier plat</a>
                             </div>
                         @endforeach
                     </div>

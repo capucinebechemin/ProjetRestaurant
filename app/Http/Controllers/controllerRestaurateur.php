@@ -77,6 +77,47 @@ public function store(Request $request) {
 
 }
 
+public function delete ($platid){
+
+    $plat = Plat::where('id',$platid)->first();
+    $plat->delete();
+    return redirect()->route('home');
+
+}
+
+public function modifier($platid){
+    $plat = Plat::where('id',$platid)->first();
+    return view('restaurateur.modif_plat',compact('plat'));
+
+}
+
+public function update_plat(Request $request, $platid){
+
+    $request->validate([
+        'nom' => 'required',
+        'prix' => 'required',
+        
+    ]);
+
+    $plat = Plat::where('id',$platid)->first();
+
+    $plat->nom = $request->get('nom');
+    $plat->prix = $request->get('prix');
+
+    if(!is_null($request->file('photo'))) {
+        
+    $newlogo = $request->file('photo');
+    $plat->photo = $newlogo->store('uploads', 'public');
+    }
+
+
+    $plat->save();
+
+
+    return redirect()->route('home');
+
+}
+
 
 
 }
