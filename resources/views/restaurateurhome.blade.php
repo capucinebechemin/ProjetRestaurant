@@ -9,8 +9,8 @@
                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                     <div>
                         <h2>Bienvenue cher restaurateur</h2>
-                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile">Gestion profil</a>
-                        <a href="{{ route('restaurateur.plat') }}" title="plat">Création plat</a>
+                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile"><img style="height: 50px" src="{{asset('storage/' . 'uploads/person.png')}}" alt="Gestion profil"></a>
+                        <a href="{{ route('restaurateur.plat') }}" title="plat"><img style="height: 50px" src="{{asset('storage/' . 'uploads/dinner.png')}}" alt="Création plat"></a>
                        
                         
                     </div>
@@ -46,7 +46,18 @@
                                          overflow: hidden;
                                          text-align: center">
 
-                                <span>{{$plat->nom}}<br><b>{{$plat->prix}}€</b></span>
+                                <div style="display: flex; flex-direction: row; justify-content: space-around; width: 100%">
+                                    <div style="display: flex; flex-direction: column; justify-content: space-around">
+                                        <p>{{$plat->nom}}</p>
+                                        <b>{{$plat->prix}}€</b>
+                                    </div>
+
+                                    <div style="display: flex; flex-direction: column; justify-content: space-around">
+                                        <a href="{{ route('restaurateur.delete', $plat->id) }}" title="Supprimer"><img style="height: 20px" src="{{asset('storage/' . 'uploads/trash.png')}}" alt="Supprimer"></a>
+                                        <a href="{{ route('restaurateur.modifier', $plat->id) }}" title="Modifier"><img style="height: 20px" src="{{asset('storage/' . 'uploads/pencil.png')}}" alt="Modifier"></a>
+                                    </div>
+                                </div>
+
 
 
                                 <img src="{{asset('storage/' . $plat->photo)}}" alt="{{$plat->nom}}"
@@ -58,9 +69,7 @@
                                              left: 50%;
                                              transform: translate( -50%, -50%);">
                                              <br>
-                                    <a href="{{ route('restaurateur.delete', $plat->id) }}" title="delete">Supprimer plat</a>
-                                    
-                                    <a href="{{ route('restaurateur.modifier', $plat->id) }}" title="modifier">Modifier plat</a>
+
                             </div>
                         @endforeach
                     </div>
