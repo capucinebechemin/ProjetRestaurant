@@ -34,6 +34,9 @@ class controllerClient extends Controller
         }else{
             return view('auth.login');
         }
+    }
+
+    public function envoiCommande(){
 
     }
 

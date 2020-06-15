@@ -9,10 +9,8 @@
                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                     <div>
                         <h2>Bienvenue cher restaurateur</h2>
-                        <a href="{{ route('restaurateur.profile') }}" title="gestion profile"><img style="height: 50px" src="{{asset('storage/' . 'uploads/person.png')}}" alt="Gestion profil"></a>
-                        <a href="{{ route('restaurateur.plat') }}" title="plat"><img style="height: 50px" src="{{asset('storage/' . 'uploads/dinner.png')}}" alt="Création plat"></a>
-                       
-                        
+                        <a href="{{ route('restaurateur.profile') }}" title="Gestion Profil"><img style="height: 50px" src="{{asset('storage/' . 'uploads/person.png')}}" alt="Gestion profil"></a>
+                        <a href="{{ route('restaurateur.plat') }}" title="Ajouter un Plat"><img style="height: 50px" src="{{asset('storage/' . 'uploads/dinner.png')}}" alt="Création plat"></a>
                     </div>
 
                     <div>
@@ -63,8 +61,8 @@
                                 <img src="{{asset('storage/' . $plat->photo)}}" alt="{{$plat->nom}}"
                                      style= "
                                              position: absolute;
-                                             max-height: 70%;
-                                             max-width: 70%;
+                                             max-height: 50%;
+                                             max-width: 50%;
                                              top: 50%;
                                              left: 50%;
                                              transform: translate( -50%, -50%);">
