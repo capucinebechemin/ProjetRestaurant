@@ -34,4 +34,11 @@ Route::get('/restaurateur/{id}/delete', 'controllerRestaurateur@delete')->name('
 Route::get('/restaurateur/{id}/modifier', 'controllerRestaurateur@modifier')->name('restaurateur.modifier');
 Route::put('/restaurateur/{id}/update_plat', 'controllerRestaurateur@update_plat')->name('restaurateur.update_plat');
 
-//Route::get('/restaurateur/{id}/plat_modif', 'controllerRestaurateur@plat_modif')->name('restaurateur.plat_modif');
+Route::get('/admin/client', 'controllerAdministrateur@client')->name('admin.client');
+Route::get('/admin/{id_user}/detail', 'controllerAdministrateur@detail')->name('admin.detail');
+Route::get('/admin/{id_user}/modif_vue', 'controllerAdministrateur@modif_vue')->name('admin.modif_vue');
+Route::put('/admin/{id_user}/modif', 'controllerAdministrateur@modif')->name('admin.modif');
+Route::get('/admin/{id_user}/suppr', 'controllerAdministrateur@suppr')->name('admin.suppr');
+
+
+Route::get('/admin/restaurateur', 'controllerAdministrateur@restaurateur')->name('admin.restaurateur');

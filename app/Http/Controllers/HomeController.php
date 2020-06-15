@@ -31,8 +31,7 @@ class HomeController extends Controller
 
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
-            $resto = Restaurateur::all();
-            return view('clienthome', compact('client'));
+            return view('clienthome', compact('client','user'));
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();
@@ -40,7 +39,9 @@ class HomeController extends Controller
             return view('restaurateurhome', compact('resto','plats'));
         }
         elseif ($user->role == '3') {
-            return view('home', compact('user'));
+            $nbr_resto = Restaurateur::all()->count();
+            $resto = Restaurateur::all();
+            return view('home', compact('user','resto','nbr_resto'));
         }
     }
 }

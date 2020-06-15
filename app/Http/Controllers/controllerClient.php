@@ -16,6 +16,7 @@ class controllerClient extends Controller
     }
 
     public function profile(){
+        
         $user = \Auth::user();
         $client = Client::where('id_user', $user->id)->first(); 
         return view('client.profile',compact('client','user'));
@@ -55,6 +56,8 @@ class controllerClient extends Controller
         $client->id_user = $user->id;
 
         $client->save();
+        return redirect()->route('home');
+
         }
         
 public function update_user(Request $request){

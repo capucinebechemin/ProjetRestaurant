@@ -13,7 +13,9 @@
                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                     <div>
                         <h3>Bienvenue {{$client->prenom}} {{$client->nom}}</h3>
+                     
                         <p>Vous disposez de {{$client->solde}}€</p>
+                        <p>User: {{$user->name}}</p>
                     </div>
                 </div>
             </div>
