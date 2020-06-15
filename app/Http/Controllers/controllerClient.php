@@ -79,6 +79,4 @@ public function update_user(Request $request){
 
 }
 
-
-    }
 }
