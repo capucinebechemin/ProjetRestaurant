@@ -67,10 +67,80 @@ public function suppr ($clientid_user){
 
 
 
+
+
+
+
+
+
+
     public function restaurateur(){
       $resto = Restaurateur::all();
         return view('admin.restaurateur',compact('resto'));
     }
+
+    public function resto($restoid_user){
+        $user= User::where('id',$restoid_user)->first();
+        $resto = Restaurateur::where('id_user', $restoid_user)->first();
+        $plats = Plat::where('id_restaurateur',$resto->id)->get();
+        return view('restaurateurhome', compact('resto','user','plats'));
+}
+
+
+    public function modif_vue_resto($restoid_user){
+        $user= User::where('id',$restoid_user)->first();
+        $resto = Restaurateur::where('id_user', $restoid_user)->first();
+    return view('admin.modif_vue_resto', compact('resto','user'));
+}
+
+
+public function modif_resto(Request $request, $restoid_user){
+
+    $request->validate([
+        'nom' => 'required',
+        'mail' => 'required|email',
+        'adresse' => 'required',
+    ]);
+
+    $user= User::where('id',$restoid_user)->first();
+    $resto = Restaurateur::where('id_user', $restoid_user)->first();
+
+    $resto->nom_restaurant = $request->get('nom');
+
+    $resto->adresse_mail_contact = $request->get('mail');
+    $resto->adresse = $request->get('adresse');
+    $resto->id_user = $user->id;
+
+    if(!is_null($request->file('logo'))) {
+        $newlogo = $request->file('logo');
+    
+        $resto->logo = $newlogo->store('uploads', 'public');
+        }
+
+    $resto->save();
+
+
+    return redirect()->route('admin.restaurateur');
+
+}
+
+
+public function suppr_resto ($restoid_user){
+    $resto = Restaurateur::where('id_user', $restoid_user)->first();
+    $user= User::where('id',$restoid_user)->first();
+    $plat = Plat::where('id_restaurateur',$resto->id)->get();
+    $plat->each->delete();
+    $resto->delete();
+    $user->delete();
+    return redirect()->route('admin.restaurateur');
+
+}
+
+
+
+
+
+
 
 
 

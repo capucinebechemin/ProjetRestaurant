@@ -21,7 +21,6 @@ public function update(Request $request){
 
     $request->validate([
         'nom' => 'required',
-        'logo' => 'required',
         'mail' => 'required|email',
         'adresse' => 'required',
     ]);
@@ -35,9 +34,11 @@ public function update(Request $request){
     $resto->adresse = $request->get('adresse');
     $resto->id_user = $user->id;
 
+    if(!is_null($request->file('logo'))) {
     $newlogo = $request->file('logo');
 
     $resto->logo = $newlogo->store('uploads', 'public');
+    }
 
     $resto->save();
 
