@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
+    public $timestamps = false;
+    protected $table = "client";
+    
     protected $fillable = [
         'prenom', 'nom', 'adresse', 'solde', 'id_user'
     ];
 
-    protected $table = "client";
-    public $timestamps = false;
+   
 
     public function client_user()
     {

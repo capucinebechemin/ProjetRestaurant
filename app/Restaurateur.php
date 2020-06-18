@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurateur extends Model
 {
+
+    public $timestamps = false;
+    protected $table = "restaurateur";
+   
     protected $fillable = [
         'nom_restaurant', 'logo', 'adresse_mail_contact', 'adresse', 'id_user'
     ];
 
-    protected $table = "restaurateur";
-    public $timestamps = false;
+   
 
     public function restaurateur_user()
     {
