@@ -27,18 +27,16 @@
                             </li>
                     </ul>
                       
+                    <button type="button" class="btn btn-secondary btn-lg"><a href="{{ route('admin.client') }}" title="gestion client">Gestion client</a></button> 
+                    <br>
+                    <button type="button" class="btn btn-secondary btn-lg"><a href="{{ route('admin.restaurateur') }}" title="gestion restaurateur">Gestion restaurateur</a></button> 
+
+                    <br>
+                    <a href="./" title="Page d'avant"> <img style="height: 50px" src="{{asset('storage/' . 'uploads/back.png')}}" alt="Back"></a>
+                   
+                    
                         </div>
-                        <div>
-                        
-                        <a href="{{ route('admin.client') }}" title="gestion client">Gestion client</a>
-                        <a href="{{ route('admin.restaurateur') }}" title="gestion restaurateur">Gestion restaurateur</a>
-
-
-
-
-
-
-                        </div>
+                      
                     </div>
 
 
