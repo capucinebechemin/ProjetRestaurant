@@ -62,6 +62,7 @@
 
                             </div>
                         </form>
+                        <a href="/coupfaim/public/admin/restaurateur" title="Page d'avant"> <img style="height: 50px" src="{{asset('storage/' . 'uploads/back.png')}}" alt="Back"></a>
                     </div>
                 </div>
             </div>

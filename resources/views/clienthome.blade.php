@@ -14,6 +14,8 @@
                      
                         <p>Vous disposez de {{$client->solde}}€</p>
                         <p>User: {{$user->name}}</p>
+                        <a href="/coupfaim/public" title="Page d'avant"> <img style="height: 50px" src="{{asset('storage/' . 'uploads/back.png')}}" alt="Back"></a>
+
                     </div>
                 </div>
             </div>
