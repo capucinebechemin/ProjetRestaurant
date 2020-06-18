@@ -34,10 +34,10 @@
 
                                         <div style="display: flex; flex-direction: column; justify-content: space-around">
                                             <label>{{__('Quantite')}}</label>
-                                            <input id="quantite" name="quantite" class="form-control" type="number" max="50" min="0" value="0">
-                                            <input id="plat" name="plat" class="form-control" type="text" value="{{$plat->nom}}" hidden>
-                                            <input id="prix" name="prix" class="form-control" type="text" value="{{$plat->prix}}" hidden>
-                                            <input id="idplat" name="idplat" class="form-control" type="text" value="{{$plat->id}}" hidden>
+                                            <input id="quantite" name="quantite[]" class="form-control" type="number" max="50" min="0" value="0">
+                                            <input id="plat" name="plat[]" class="form-control" type="text" value="{{$plat->nom}}" hidden>
+                                            <input id="prix" name="prix[]" class="form-control" type="text" value="{{$plat->prix}}" hidden>
+                                            <input id="idplat" name="idplat[]" class="form-control" type="text" value="{{$plat->id}}" hidden>
                                         </div>
                                     </div>
 
@@ -52,6 +52,7 @@
 
                                 </div>
                             @endforeach
+
                     </div>
                         <button style="background-color: #88C057; border-color: #88C057" onclick="check(); return false" class="btn btn-primary">
                             {{ __("Visualiser la commande") }}
@@ -73,15 +74,15 @@
 @section('js')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-        function check() {
+        /*function check() {
             var lesplats = document.querySelectorAll("[id='plat']");
             var laquantite = document.querySelectorAll("[id='quantite']");
             var leprix = document.querySelectorAll("[id='prix']");
             var prixtotal = 0;
 
-            //document.getElementById("check").innerHTML = lesplats[0].value + laquantite[0].value + leprix[0].value + lesplats[1].value + laquantite[1].value + leprix[1].value;
             document.getElementById("check").innerHTML = "";
             document.getElementById("prixtotal").innerHTML = "";
+
             for (let i=0; i<lesplats.length; i++){
                 if (laquantite[i].value !== "0"){
                     var prix = parseInt(laquantite[i].value) * parseInt(leprix[i].value);
@@ -89,9 +90,10 @@
                     prixtotal += prix;
                 }
             }
+
             if (prixtotal !== 0){
                 document.getElementById("prixtotal").innerHTML = 'Sous Total : ' + prixtotal + '€';
             }
-        }
+        }*/
     </script>
 @endsection

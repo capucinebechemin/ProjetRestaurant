@@ -41,24 +41,38 @@ class controllerClient extends Controller
         $user = \Auth::user();
         $client = Client::where('id_user', $user->id)->first();
 
-        $commande = new Commande();
+        $tab_plat = $request->get('idplat');
+        $tab_prix = $request->get('prix');
+        $tab_quantite = $request->get('quantite');
 
-        $commande->quantite = $request->get('quantite');
-        $commande->heure_commande = now();
-        $commande->reception = false;
-        $commande->id_client = $client->id;
-        $commande->id_plat = $request->get('idplat');
+        $prixCommande = 0;
+        $i = 0;
 
-        $prixplat = $request->get('prix');
+        foreach ($tab_quantite as $quantite){
+            //dd($tab_plat[$i]);
+            if ($quantite != 0){
+                $commande = new Commande();
+
+                $commande->quantite = $quantite;
+                $commande->reception = false;
+                $commande->id_client = $client->id;
+                $commande->heure_commande = now();
+
+                $commande->id_plat = $tab_plat[$i];
+
+                $prixCommande += $tab_prix[$i] * $quantite;
+
+                $commande->save();
+            }
+            $i +=1;
+        }
+
         $solde = $client->solde;
+        $client->solde = $solde - $prixCommande;
 
-        $client->solde = $solde - $prixplat;
-
-        $commande->save();
         $client->save();
 
         return redirect()->route('home');
-
     }
 
     public function update(Request $request){
