@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/client/profile', 'controllerClient@profile')->name('client.profile');
 Route::put('/client/update', 'controllerClient@update')->name('client.update');
 Route::get('/client/{id}/commande', 'controllerClient@commande')->name('client.commande');
-Route::post('/client/send_commande', 'controllerClient@envoiCommande')->name('client.envoiCommande');
+Route::post('/client/envoi_commande', 'controllerClient@envoi_commande')->name('client.envoi_commande');
 Route::put('/client/update_user', 'controllerClient@update_user')->name('client.update_user');
 
 

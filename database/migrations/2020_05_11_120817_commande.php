@@ -21,7 +21,6 @@ class Commande extends Migration
 
             $table->boolean('reception');
 
-      
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Commande;
 use App\Plat;
 use App\Restaurateur;
 use http\Client\Curl\User;
@@ -35,7 +36,27 @@ class controllerClient extends Controller
         }
     }
 
-    public function envoiCommande(){
+    public function envoi_commande(Request $request){
+        $user = \Auth::user();
+        $client = Client::where('id_user', $user->id)->first();
+
+        $commande = new Commande();
+
+        $commande->quantite = $request->get('quantite');
+        $commande->heure_commande = now();
+        $commande->reception = false;
+        $commande->id_client = $client->id;
+        $commande->id_plat = $request->get('idplat');
+
+        $prixplat = $request->get('prix');
+        $solde = $client->solde;
+
+        $client->solde = $solde - $prixplat;
+
+        $commande->save();
+        $client->save();
+
+        return redirect()->route('home');
 
     }
 
@@ -58,6 +79,7 @@ class controllerClient extends Controller
         $client->id_user = $user->id;
 
         $client->save();
+
         }
         
 public function update_user(Request $request){
