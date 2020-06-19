@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <a href="./" title="Page Précédente"> <img style="height: 25px" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
                 <div class="modal-title">Bienvenue dans l'administation</div>
 
 
@@ -32,8 +33,7 @@
                     <button type="button" class="btn btn-secondary btn-lg"><a href="{{ route('admin.restaurateur') }}" title="gestion restaurateur">Gestion restaurateur</a></button> 
 
                     <br>
-                    <a href="./" title="Page d'avant"> <img style="height: 50px" src="{{asset('storage/' . 'uploads/back.png')}}" alt="Back"></a>
-                   
+
                     
                         </div>
                       

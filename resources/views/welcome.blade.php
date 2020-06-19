@@ -96,7 +96,7 @@
                         </div>
                         <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
                             @foreach($restaurants as $resto)
-                                <a href="{{ route('client.commande', $resto->id)}}">
+                                <a style="text-decoration: none; color: #1b1e21" href="{{ route('client.commande', $resto->id)}}">
                                     <div style="
                                              margin: 50px;
                                              position: relative;
@@ -124,7 +124,7 @@
                     </div>
                     <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
                         @foreach($restaurants as $resto)
-                            <a href="{{ route('client.commande', $resto->id)}}">
+                            <a style="text-decoration: none; color: #1b1e21" href="{{ route('client.commande', $resto->id)}}">
                                 <div style="
                                              margin: 50px;
                                              position: relative;

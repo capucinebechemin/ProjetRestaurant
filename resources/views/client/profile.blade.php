@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+
                 <div class="modal-title">Gestion du profil</div>
 
                         <form method="POST" action="{{ route('client.update') }}" enctype="multipart/form-data">
@@ -69,62 +70,35 @@
                             </div>
                         </form>
 
+                        <form method="POST" action="{{ route('client.update_user') }}" enctype="multipart/form-data">
+
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group row">
 
 
+                            <label class="col-md-4 col-form-label text-md-right" for="name">Utilisateur </label><br>
+                            <div class="col-md-6">
+                                <input id="name" class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{$user->name}}">
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>Veuillez remplir ce champ</strong>
+                                </span>
+                                @enderror
+                            </div>
 
 
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __("Valider") }}
+                                    </button>
+                                </div>
+                            </div>
 
-
-
-<form method="POST" action="{{ route('client.update_user') }}" enctype="multipart/form-data">
-
-@csrf
-@method('PUT')
-<div class="form-group row">
-
-
-    <label class="col-md-4 col-form-label text-md-right" for="name">Utilisateur </label><br>
-    <div class="col-md-6">
-        <input id="name" class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{$user->name}}">
-
-        @error('name')
-        <span class="invalid-feedback" role="alert">
-            <strong>Veuillez remplir ce champ</strong>
-        </span>
-        @enderror
-    </div>
-
-
-    <div class="form-group row mb-0">
-        <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">
-                {{ __("Valider") }}
-            </button>
-        </div>
-    </div>
-
-</div>
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/coupfaim/public/home" title="Page d'avant"> <img style="height: 50px" src="{{asset('storage/' . 'uploads/back.png')}}" alt="Back"></a>
+                        </div>
+                        </form>
 
                     </div>
                 </div>
@@ -132,4 +106,8 @@
         </div>
     </div>
 
+@endsection
+
+@section('back')
+    <a href="/coupfaim/public/home" title="Page d'avant"> <img style="height: 25px; padding-right: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
 @endsection

@@ -62,11 +62,14 @@
 
                             </div>
                         </form>
-                        <a href="/coupfaim/public/home" title="Page d'avant"> <img style="height: 50px" src="{{asset('storage/' . 'uploads/back.png')}}" alt="Back"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+@endsection
+
+@section('back')
+    <a href="/coupfaim/public/home" title="Page Précédente"> <img style="height: 25px; margin-bottom: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
 @endsection
