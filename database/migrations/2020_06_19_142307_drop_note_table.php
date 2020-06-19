@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateNote extends Migration
+class DropNoteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,7 @@ class UpdateNote extends Migration
      */
     public function up()
     {
-        Schema::table('note', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_client');
-            $table->foreign('id_client')->references('id')->on('client');
-            $table->unsignedBigInteger('id_plat');
-            $table->foreign('id_plat')->references('id')->on('plat');
-        });
+        Schema::dropIfExists('note');
     }
 
     /**
@@ -28,6 +23,6 @@ class UpdateNote extends Migration
      */
     public function down()
     {
-
+        //
     }
 }

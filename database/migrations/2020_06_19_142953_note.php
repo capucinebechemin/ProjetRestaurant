@@ -11,12 +11,10 @@ class Note extends Migration
      *
      * @return void
      */
-
     public function up()
     {
         Schema::create('note', function (Blueprint $table) {
             $table->id();
-
             $table->integer('note')->nullable();
             $table->text('avis')->nullable();
 
