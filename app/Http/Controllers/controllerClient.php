@@ -67,6 +67,7 @@ class controllerClient extends Controller
             $i +=1;
         }
 
+        $prixCommande += 2.5;
         $solde = $client->solde;
         $client->solde = $solde - $prixCommande;
 
