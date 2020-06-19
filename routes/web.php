@@ -47,3 +47,5 @@ Route::get('/admin/{id_user}/resto', 'controllerAdministrateur@resto')->name('ad
 Route::get('/admin/{id_user}/modif_vue_resto', 'controllerAdministrateur@modif_vue_resto')->name('admin.modif_vue_resto');
 Route::put('/admin/{id_user}/modif_resto', 'controllerAdministrateur@modif_resto')->name('admin.modif_resto');
 Route::get('/admin/{id_user}/suppr_resto', 'controllerAdministrateur@suppr_resto')->name('admin.suppr_resto');
+
+

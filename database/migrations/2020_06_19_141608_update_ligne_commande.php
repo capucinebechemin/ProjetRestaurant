@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCommande extends Migration
+class UpdateLigneCommande extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class UpdateCommande extends Migration
      */
     public function up()
     {
-
-        Schema::table('commande', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_client');
-            $table->foreign('id_client')->references('id')->on('client');
+       
+        Schema::table('lignecommande', function (Blueprint $table) {
             $table->unsignedBigInteger('id_plat');
             $table->foreign('id_plat')->references('id')->on('plat');
+            $table->unsignedBigInteger('id_commande');
+            $table->foreign('id_commande')->references('id')->on('commande');
+
 
         });
     }
@@ -30,6 +31,6 @@ class UpdateCommande extends Migration
      */
     public function down()
     {
-
+        //
     }
 }

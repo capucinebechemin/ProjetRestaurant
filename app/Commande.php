@@ -13,13 +13,13 @@ class Commande extends Model
     {
         return $this->belongsTo(client::class, "id_client");
     }
-
-    public function commande_plat()
+    public function lignecommande_id()
     {
-        return $this->belongsTo(plat::class, "id_plat");
+        return $this->hasMany(lignecommande::class);
     }
+  
 
     protected $fillable = [
-        'quantite', 'heure_commande', 'reception', 'id_client', 'id_plat'
+     'heure_commande', 'reception', 'id_client',
     ];
 }

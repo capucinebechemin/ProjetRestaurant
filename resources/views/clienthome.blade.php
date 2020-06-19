@@ -14,6 +14,18 @@
                      
                         <p>Vous disposez de {{$client->solde}}€</p>
                         <p>User: {{$user->name}}</p>
+
+                        <h2>Vos commandes :</h2>
+
+                        @foreach($commandes as $commande)
+                       
+                        <p>{{$commande->id_plat}} {{$commande->heure_commande}}</p>
+                        
+                        @endforeach
+
+
+
+
                         <a href="/coupfaim/public" title="Page d'avant"> <img style="height: 50px" src="{{asset('storage/' . 'uploads/back.png')}}" alt="Back"></a>
 
                     </div>
