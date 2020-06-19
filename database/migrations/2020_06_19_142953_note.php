@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCommande extends Migration
+class Note extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class UpdateCommande extends Migration
      */
     public function up()
     {
+        Schema::create('note', function (Blueprint $table) {
+            $table->id();
+            $table->integer('note')->nullable();
+            $table->text('avis')->nullable();
 
-        Schema::table('commande', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_client');
-            $table->foreign('id_client')->references('id')->on('client');
-            $table->unsignedBigInteger('id_plat');
-            $table->foreign('id_plat')->references('id')->on('plat');
-
+           
         });
     }
 
@@ -30,6 +29,6 @@ class UpdateCommande extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('note');
     }
 }

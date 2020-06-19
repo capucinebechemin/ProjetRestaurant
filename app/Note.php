@@ -11,12 +11,12 @@ class Note extends Model
     public $timestamps = false;
     
     protected $fillable = [
-        'note', 'avis', 'id_plat', 'id_client'
+        'note', 'avis', 'id_commande', 'id_client'
     ];
 
     public function note_plat()
     {
-        return $this->belongsTo(plat::class, 'id_plat');
+        return $this->belongsTo(plat::class, 'id_commande');
     }
 
     public function note_client()

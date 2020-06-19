@@ -18,9 +18,9 @@ class Plat extends Model
         return $this->belongsTo(restaurateur::class, "id_restaurateur");
     }
 
-    public function commande_id()
+    public function lignecommande_id()
     {
-        return $this->hasMany(commande::class);
+        return $this->hasMany(lignecommande::class);
     }
 
     public function note_id()

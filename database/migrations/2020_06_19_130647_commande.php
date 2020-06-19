@@ -4,23 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Note extends Migration
+class Commande extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-
     public function up()
     {
-        Schema::create('note', function (Blueprint $table) {
+        Schema::create('commande', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('heure_commande')->default(null);
+            $table->boolean('reception');
 
-            $table->integer('note')->nullable();
-            $table->text('avis')->nullable();
-
-           
         });
     }
 
@@ -31,6 +23,7 @@ class Note extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('note');
+        Schema::dropIfExists('commande');
     }
 }
+
