@@ -5,6 +5,7 @@
     background-color: #ffffff;
     border-top: outset;
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
     bottom: 0;

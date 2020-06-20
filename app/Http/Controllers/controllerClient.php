@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Commande;
+use App\LigneCommande;
 use App\Plat;
 use App\Restaurateur;
 use http\Client\Curl\User;
@@ -41,6 +42,17 @@ class controllerClient extends Controller
         $user = \Auth::user();
         $client = Client::where('id_user', $user->id)->first();
 
+        $heure = now();
+
+        $commande = new Commande();
+        $commande->reception = false;
+        $commande->id_client = $client->id;
+        $commande->heure_commande = $heure;
+
+        $commande->save();
+
+        $lacommande = Commande::where('heure_commande', $heure)->first();
+
         $tab_plat = $request->get('idplat');
         $tab_prix = $request->get('prix');
         $tab_quantite = $request->get('quantite');
@@ -49,20 +61,19 @@ class controllerClient extends Controller
         $i = 0;
 
         foreach ($tab_quantite as $quantite){
-            //dd($tab_plat[$i]);
             if ($quantite != 0){
-                $commande = new Commande();
 
-                $commande->quantite = $quantite;
-                $commande->reception = false;
-                $commande->id_client = $client->id;
-                $commande->heure_commande = now();
+                $ligne_commande = new LigneCommande();
 
-                $commande->id_plat = $tab_plat[$i];
+                $ligne_commande->quantite = $quantite;
+
+                $ligne_commande->id_plat = $tab_plat[$i];
+
+                $ligne_commande->id_commande = $lacommande->id;
 
                 $prixCommande += $tab_prix[$i] * $quantite;
 
-                $commande->save();
+                $ligne_commande->save();
             }
             $i +=1;
         }
