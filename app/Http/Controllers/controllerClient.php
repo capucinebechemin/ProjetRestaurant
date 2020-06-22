@@ -30,7 +30,7 @@ class controllerClient extends Controller
             $user = \Auth::user();
             $client = Client::where('id_user', $user->id)->first();
             $resto = Restaurateur::where('id', $id)->first();
-            $plats = Plat::where('id_restaurateur', $id)->get();
+            $plats = Plat::where('restaurateur_id', $id)->get();
 
             return view('client.commande',compact('plats','client','resto'));
         }else{

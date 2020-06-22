@@ -10,12 +10,12 @@ class Plat extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nom', 'prix', 'photo', 'id_restaurateur'
+        'nom', 'prix', 'photo', 'restaurateur_id','visible'
     ];
 
     public function plat_restaurateur()
     {
-        return $this->belongsTo(Restaurateur::class, "id_restaurateur");
+        return $this->belongsTo(Restaurateur::class, "restaurateur_id");
     }
 
     public function lignecommande_id()
