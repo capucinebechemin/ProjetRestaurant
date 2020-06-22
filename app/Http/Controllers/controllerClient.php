@@ -6,6 +6,7 @@ use App\Client;
 use App\Commande;
 use App\LigneCommande;
 use App\Plat;
+use App\Note;
 use App\Restaurateur;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Hash;
 
 class controllerClient extends Controller
 {
-    public function indexResto(){
-
-    }
+    
 
     public function profile(){
         
@@ -130,6 +129,33 @@ public function update_user(Request $request){
 
     return redirect()->route('home');
 
+}
+
+
+public function note($id){
+
+    $commande_id = $id;
+    $user = \Auth::user();
+    $client = Client::where('id_user', $user->id)->first(); 
+    return view('client.note',compact('client','user','commande_id'));
+}
+public function insert_note(Request $request){
+    $request->validate([
+        'note' => 'required',
+        'avis' => 'required',
+        'id_client' => 'required',
+        'commande_id' => 'required',
+    ]);
+
+    $notation = new Note();
+    $notation->note = $request->get('note');
+    $notation->avis = $request->get('avis');
+    $notation->id_client = $request->get('id_client');
+    $notation->commande_id = $request->get('commande_id');
+
+    $notation->save();
+
+    return redirect()->route('home');
 }
 
 }

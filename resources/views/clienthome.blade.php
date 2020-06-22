@@ -18,8 +18,21 @@
                         <h2>Commandes</h2>
                        
                         <ul>
-                        <p>Commande en cours :</p>
+                        <h3>Commande en cours :</h3>
                        @foreach($commandes as $commande)
+                            <li>
+                            <p>Commande du {{$commande->heure_commande}}</p>
+                                @foreach($commande->ligneCommandes as $ligne)
+                                    <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                                @endforeach
+                            </li>
+                           <a href="{{ route('client.note',$commande->id) }}" title="Page Précédente">  <button style="margin-bottom: 20%" type="button"  class="btn btn-primary">{{ __("Réception de la commande") }}</button></a>
+                           
+                        </button>
+                            @endforeach 
+
+                            <h3>Commandes passées: </h3>
+                            @foreach($commandes_fin as $commande)
                             <li>
                             <p>Commande du {{$commande->heure_commande}}</p>
                                 @foreach($commande->ligneCommandes as $ligne)
@@ -28,11 +41,6 @@
                             </li>
                           
                             @endforeach 
-
-                            <p>Commandes passées: </p>
-                            <li>
-                            <p> </p>
-                            </li>
                            
                     </ul>
                   
