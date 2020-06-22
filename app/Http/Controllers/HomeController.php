@@ -54,8 +54,13 @@ class HomeController extends Controller
         }
         elseif ($user->role == '3') {
             $nbr_resto = Restaurateur::all()->count();
+            $nbr_commande = Commande::where('reception', 0)->count();
+            $nbr_commande_fini = Commande::where('reception', 1)->count();
+            $revenu = Commande::all()->count();
+            $revenu = $revenu *2.5;
             $resto = Restaurateur::all();
-            return view('home', compact('user','resto','nbr_resto'));
+           
+            return view('home', compact('user','resto','nbr_resto','revenu','nbr_commande','nbr_commande_fini'));
         }
     }
 }

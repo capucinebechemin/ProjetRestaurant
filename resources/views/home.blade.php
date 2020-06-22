@@ -18,13 +18,13 @@
                             <p>Nombre de restaurant : {{$nbr_resto}}</p>
                             </li>
                             <li>
-                            <p>Nombre de commandes passées: {{$nbr_resto}}</p>
+                            <p>Nombre de commandes passées: {{$nbr_commande_fini}}</p>
                             </li>
                             <li>
-                            <p>Nombre de commandes en cours : {{$nbr_resto}}</p>
+                            <p>Nombre de commandes en cours : {{$nbr_commande}}</p>
                             </li>
                             <li>
-                            <p>Revenu totale : {{$nbr_resto}}</p>
+                            <p>Revenu totale : {{$revenu}} €</p>
                             </li>
                     </ul>
                       
