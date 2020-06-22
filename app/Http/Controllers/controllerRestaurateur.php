@@ -60,14 +60,14 @@ public function store(Request $request) {
         'nom' => 'required',
         'prix' => 'required',
         'photo' => 'required',
-        'id_restaurateur' => 'required',
+        'restaurateur_id' => 'required',
     ]);
 
     $plat = new Plat();
     $plat->nom = $request->get('nom');
     $plat->prix = $request->get('prix');
 
-    $plat->id_restaurateur = $request->get('id_restaurateur');
+    $plat->restaurateur_id = $request->get('restaurateur_id');
 
     $photo = $request->file('photo');
 

@@ -41,7 +41,7 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <input id="id_restaurateur" type="hidden" name="id_restaurateur" value="{{$resto->id}}">
+                                <input id="restaurateur_id" type="hidden" name="restaurateur_id" value="{{$resto->id}}">
                                
 
                                 <div class="form-group row mb-0">

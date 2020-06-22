@@ -55,7 +55,7 @@ class HomeController extends Controller
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();
-            $plats = Plat::where('id_restaurateur',$resto->id)->get();
+            $plats = Plat::where('restaurateur_id',$resto->id)->get();
             return view('restaurateurhome', compact('resto','plats'));
         }
         elseif ($user->role == '3') {

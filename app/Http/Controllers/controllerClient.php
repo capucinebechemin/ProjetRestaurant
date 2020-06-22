@@ -30,7 +30,7 @@ class controllerClient extends Controller
             $user = \Auth::user();
             $client = Client::where('id_user', $user->id)->first();
             $resto = Restaurateur::where('id', $id)->first();
-            $plats = Plat::where('id_restaurateur', $id)->get();
+            $plats = Plat::where('restaurateur_id', $id)->get();
 
             return view('client.commande',compact('plats','client','resto'));
         }else{
@@ -69,7 +69,7 @@ class controllerClient extends Controller
 
                 $ligne_commande->id_plat = $tab_plat[$i];
 
-                $ligne_commande->id_commande = $lacommande->id;
+                $ligne_commande->commande_id = $lacommande->id;
 
                 $prixCommande += $tab_prix[$i] * $quantite;
 
