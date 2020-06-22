@@ -21,13 +21,13 @@
                         <p>Commande en cours :</p>
                        @foreach($commandes as $commande)
                             <li>
-                            <p> {{$commande}}</p>
-                           
-                            
+                            <p>Commande du {{$commande->heure_commande}}</p>
+                                @foreach($commande->ligneCommandes as $ligne)
+                                    <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                                @endforeach
                             </li>
                           
                             @endforeach 
-                            
 
                             <p>Commandes passées: </p>
                             <li>

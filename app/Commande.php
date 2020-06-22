@@ -14,8 +14,6 @@ class Commande extends Model
         return $this->belongsTo(Client::class, "id_client");
     }
 
-
-
     public function ligneCommandes()
     {
         return $this->hasMany(LigneCommande::class);

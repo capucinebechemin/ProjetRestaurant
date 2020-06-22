@@ -33,8 +33,8 @@ class HomeController extends Controller
 
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
-            $commandes = Commande::where('id_client',$client->id)->with('ligneCommandes')->get();
-
+            $commandes = Commande::where('id_client',$client->id)->get();//->with('ligneCommandes')->get();
+            //$lignes = LigneCommande::has()->get();
 
 
             //$ligne_commande = LigneCommande::where('id_commande',$commandes->id)->get();
@@ -46,11 +46,8 @@ class HomeController extends Controller
            //$commandeSame = Commande::groupby('heure_commande')->where('id_client',$client->id)->get();
           //->orderby('heure_commande','desc')
          // dd($commandeSame);
-          
            // $commandeheure = $commandeSame->heure_commande->get();
            //dd($commandeheure);
-
-
            //$commandeDetail = Commande::select('id_plat','quantite')->where('heure_commande',$commandeSame->heure_commande)->first();
 
 
