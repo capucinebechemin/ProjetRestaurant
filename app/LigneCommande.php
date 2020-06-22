@@ -11,15 +11,16 @@ class LigneCommande extends Model
 
     public function ligne_plat()
     {
-        return $this->belongsTo(plat::class, "id_plat");
+        return $this->belongsTo(Plat::class, "id_plat");
     }
-    public function id_commande()
+
+    public function commande()
     {
-        return $this->belongsTo(commande::class, "id_commande");
+        return $this->belongsTo(Commande::class, "commande_id");
     }
   
 
     protected $fillable = [
-     'quantite','id_plat' ,'id_commande'
+     'quantite','id_plat' ,'commande_id'
     ];
 }

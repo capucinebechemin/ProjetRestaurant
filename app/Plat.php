@@ -15,16 +15,16 @@ class Plat extends Model
 
     public function plat_restaurateur()
     {
-        return $this->belongsTo(restaurateur::class, "id_restaurateur");
+        return $this->belongsTo(Restaurateur::class, "id_restaurateur");
     }
 
     public function lignecommande_id()
     {
-        return $this->hasMany(lignecommande::class);
+        return $this->hasMany(LigneCommande::class);
     }
 
     public function note_id()
     {
-        return $this->hasMany(note::class);
+        return $this->hasMany(Note::class);
     }
 }

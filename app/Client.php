@@ -17,17 +17,17 @@ class Client extends Model
 
     public function client_user()
     {
-        return $this->belongsTo(user::class, "id_user");
+        return $this->belongsTo(User::class, "id_user");
     }
 
     public function commande_id()
     {
-        return $this->hasMany(commande::class);
+        return $this->hasMany(Commande::class);
     }
 
     public function note_id()
     {
-        return $this->hasMany(note::class);
+        return $this->hasMany(Note::class);
     }
 
 }

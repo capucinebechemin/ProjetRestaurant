@@ -11,11 +11,14 @@ class Commande extends Model
 
     public function commande_client()
     {
-        return $this->belongsTo(client::class, "id_client");
+        return $this->belongsTo(Client::class, "id_client");
     }
-    public function lignecommande_id()
+
+
+
+    public function ligneCommandes()
     {
-        return $this->hasMany(lignecommande::class);
+        return $this->hasMany(LigneCommande::class);
     }
   
 

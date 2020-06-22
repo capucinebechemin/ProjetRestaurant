@@ -6,6 +6,7 @@ use App\Client;
 use App\Plat;
 use App\Restaurateur;
 use App\Commande;
+use App\LigneCommande;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
@@ -32,10 +33,18 @@ class HomeController extends Controller
 
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
-            $commandes = Commande::where('id_client',$client->id)->orderby('heure_commande','desc')->get();
+            $commandes = Commande::where('id_client',$client->id)->with('ligneCommandes')->get();
+
+
+
+            //$ligne_commande = LigneCommande::where('id_commande',$commandes->id)->get();
+
+
+
+
            // $commandeSame = Commande::where()distinct(heure) (prendre les commandes qui ont le meme heure(en fonction du client))
            //$commandeSame = Commande::groupby('heure_commande')->where('id_client',$client->id)->get();
-          
+          //->orderby('heure_commande','desc')
          // dd($commandeSame);
           
            // $commandeheure = $commandeSame->heure_commande->get();
@@ -45,7 +54,7 @@ class HomeController extends Controller
            //$commandeDetail = Commande::select('id_plat','quantite')->where('heure_commande',$commandeSame->heure_commande)->first();
 
 
-            return view('clienthome', compact('client','user','commandes','commandeSame','commandeDetail','commandeheure'));
+            return view('clienthome', compact('client','user','commandes'));
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();

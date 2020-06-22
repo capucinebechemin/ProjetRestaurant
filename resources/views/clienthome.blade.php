@@ -15,6 +15,28 @@
                      
                         <p>Vous disposez de {{$client->solde}}€</p>
 
+                        <h2>Commandes</h2>
+                       
+                        <ul>
+                        <p>Commande en cours :</p>
+                       @foreach($commandes as $commande)
+                            <li>
+                            <p> {{$commande}}</p>
+                           
+                            
+                            </li>
+                          
+                            @endforeach 
+                            
+
+                            <p>Commandes passées: </p>
+                            <li>
+                            <p> </p>
+                            </li>
+                           
+                    </ul>
+                  
+
                     </div>
                 </div>
             </div>

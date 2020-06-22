@@ -39,16 +39,16 @@ class User extends Authenticatable
 
     public function client_id()
     {
-        return $this->hasMany(client::class);
+        return $this->hasMany(Client::class);
     }
 
     public function restaurateur_id()
     {
-        return $this->hasMany(restaurateur::class);
+        return $this->hasMany(Restaurateur::class);
     }
 
     public function administrateur_id()
     {
-        return $this->hasMany(administrateur::class);
+        return $this->hasMany(Administrateur::class);
     }
 }

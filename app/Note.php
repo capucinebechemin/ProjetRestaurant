@@ -16,11 +16,11 @@ class Note extends Model
 
     public function note_plat()
     {
-        return $this->belongsTo(plat::class, 'id_commande');
+        return $this->belongsTo(Plat::class, 'id_commande');
     }
 
     public function note_client()
     {
-        return $this->belongsTo(client::class, 'id_client');
+        return $this->belongsTo(Client::class, 'id_client');
     }
 }

@@ -18,11 +18,11 @@ class Restaurateur extends Model
 
     public function restaurateur_user()
     {
-        return $this->belongsTo(user::class, "id_user");
+        return $this->belongsTo(User::class, "id_user");
     }
 
     public function plat_id()
     {
-        return $this->hasMany(plat::class);
+        return $this->hasMany(Plat::class);
     }
 }
