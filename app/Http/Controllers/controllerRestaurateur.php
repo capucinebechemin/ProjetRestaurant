@@ -72,16 +72,18 @@ public function store(Request $request) {
     $photo = $request->file('photo');
 
     $plat->photo = $photo->store('uploads', 'public');
+    $plat->visible = 1;
     $plat->save();
 
     return redirect()->route('home');
 
 }
 
-public function delete ($platid){
+public function delete($platid){
 
     $plat = Plat::where('id',$platid)->first();
-    $plat->delete();
+    $plat->visible = 0;
+    $plat->save();
     return redirect()->route('home');
 
 }
@@ -110,7 +112,6 @@ public function update_plat(Request $request, $platid){
     $newlogo = $request->file('photo');
     $plat->photo = $newlogo->store('uploads', 'public');
     }
-
 
     $plat->save();
 

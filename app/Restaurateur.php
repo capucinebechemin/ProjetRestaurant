@@ -14,7 +14,6 @@ class Restaurateur extends Model
         'nom_restaurant', 'logo', 'adresse_mail_contact', 'adresse', 'id_user'
     ];
 
-   
 
     public function restaurateur_user()
     {
