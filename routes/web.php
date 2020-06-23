@@ -25,6 +25,8 @@ Route::put('/client/update', 'controllerClient@update')->name('client.update');
 Route::get('/client/{id}/commande', 'controllerClient@commande')->name('client.commande');
 Route::post('/client/envoi_commande', 'controllerClient@envoi_commande')->name('client.envoi_commande');
 Route::put('/client/update_user', 'controllerClient@update_user')->name('client.update_user');
+Route::get('/client/{id}/note', 'controllerClient@note')->name('client.note');
+Route::post('/client/insert_note', 'controllerClient@insert_note')->name('client.insert_note');
 
 
 Route::get('/restaurateur/profile', 'controllerRestaurateur@profile')->name('restaurateur.profile');

@@ -33,25 +33,11 @@ class HomeController extends Controller
 
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
-            $commandes = Commande::where('id_client',$client->id)->get();//->with('ligneCommandes')->get();
-            //$lignes = LigneCommande::has()->get();
+            $commandes = Commande::where('id_client',$client->id)->where('reception', 0)->get();
+            $commandes_fin = Commande::where('id_client',$client->id)->where('reception', 1)->get();
+            
 
-
-            //$ligne_commande = LigneCommande::where('id_commande',$commandes->id)->get();
-
-
-
-
-           // $commandeSame = Commande::where()distinct(heure) (prendre les commandes qui ont le meme heure(en fonction du client))
-           //$commandeSame = Commande::groupby('heure_commande')->where('id_client',$client->id)->get();
-          //->orderby('heure_commande','desc')
-         // dd($commandeSame);
-           // $commandeheure = $commandeSame->heure_commande->get();
-           //dd($commandeheure);
-           //$commandeDetail = Commande::select('id_plat','quantite')->where('heure_commande',$commandeSame->heure_commande)->first();
-
-
-            return view('clienthome', compact('client','user','commandes'));
+            return view('clienthome', compact('client','user','commandes','commandes_fin'));
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();

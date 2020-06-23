@@ -28,9 +28,9 @@
                             </li>
                     </ul>
                       
-                    <button type="button" class="btn btn-secondary btn-lg"><a href="{{ route('admin.client') }}" title="gestion client">Gestion client</a></button> 
+                    <a href="{{ route('admin.client') }}" title="gestion client"><button type="button" class="btn btn-secondary btn-lg">Gestion client</button></a>
                     <br>
-                    <button type="button" class="btn btn-secondary btn-lg"><a href="{{ route('admin.restaurateur') }}" title="gestion restaurateur">Gestion restaurateur</a></button> 
+                   <a href="{{ route('admin.restaurateur') }}" title="gestion restaurateur"> <button type="button" class="btn btn-secondary btn-lg">Gestion restaurateur</button></a>
 
                     <br>
 
