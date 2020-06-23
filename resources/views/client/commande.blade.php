@@ -54,13 +54,14 @@
                             @endforeach
                     </div>
                         <button style="background-color: #88C057; border-color: #88C057" onclick="check(); return false" class="btn btn-primary">
-                            {{ __("Visualiser la commande") }}
+                            {{ __("Confirmer la commande") }}
                         </button>
                         <p id="check"></p>
                         <p id="prixtotal"></p>
                         <p>* Les frais de livraison s'élève à 2.50€ par commande.</p>
-                        <button style="margin-bottom: 20%" type="submit" class="btn btn-primary">
-                            {{ __("Confirmer la commande") }}
+                        <p id="soldeok"></p>
+                        <button id="confirmer" onclick="payer()" style="margin-bottom: 20%; display: none;" type="submit" class="btn btn-primary">
+                            {{ __("Payer la commande") }}
                         </button>
                 </form>
             </div>
@@ -84,6 +85,8 @@
 
             document.getElementById("check").innerHTML = "";
             document.getElementById("prixtotal").innerHTML = "";
+            document.getElementById("confirmer").style.display = "none";
+            document.getElementById("soldeok").innerHTML = "";
 
             for (let i=0; i<lesplats.length; i++){
                 if (laquantite[i].value !== "0"){
@@ -95,6 +98,14 @@
 
             if (prixtotal !== 0){
                 document.getElementById("prixtotal").innerHTML = 'Sous Total : ' + prixtotal + '€';
+                prixtotal += 2.5;
+                if (prixtotal <= parseInt({{$client->solde}})){
+                    document.getElementById("confirmer").style.display = "block";
+                }else {
+                    document.getElementById("soldeok").innerHTML = "Vous n'avez pas assez d'argent.";
+                }
+            }else{
+                document.getElementById("soldeok").innerHTML = "Vous n'avez rien commandé.";
             }
         }
     </script>

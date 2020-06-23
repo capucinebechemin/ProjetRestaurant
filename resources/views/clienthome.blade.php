@@ -9,7 +9,10 @@
 
                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                     <div>
-                        <a href="{{ route('client.profile') }}" title="Gestion Profil"><img style="height: 50px" src="{{asset('storage/' . 'uploads/person.png')}}" alt="Gestion profil"></a>
+                        @if($user->role = 3)
+                        @else
+                            <a href="{{ route('client.profile') }}" title="Gestion Profil"><img style="height: 50px" src="{{asset('storage/' . 'uploads/person.png')}}" alt="Gestion profil"></a>
+                        @endif
 
                         <h3>Bienvenue {{$client->prenom}} {{$client->nom}}</h3>
                      
@@ -17,33 +20,40 @@
 
                         <h2>Commandes</h2>
                        
-                        <ul>
                         <h3>Commande en cours :</h3>
-                       @foreach($commandes as $commande)
-                            <li>
-                            <p>Commande du {{$commande->heure_commande}}</p>
-                                @foreach($commande->ligneCommandes as $ligne)
-                                    <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                        <div style="display: flex; flex-direction: column">
+                            @if($commandes->isEmpty())
+                                <p>Vous n avez pas de commandes en cours</p>
+                            @else
+                                @foreach($commandes as $commande)
+                                <div>
+                                    <b>Commande du {{$commande->heure_commande}}</b>
+                                    @foreach($commande->ligneCommandes as $ligne)
+                                        <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                                    @endforeach
+
+                                    <a href="{{ route('client.note',$commande->id) }}" title="Reception">
+                                        <button style="margin-bottom: 20%" type="button"  class="btn btn-primary">{{ __("J'ai reçu la commande") }}</button>
+                                    </a>
+                                </div>
                                 @endforeach
-                            </li>
-                           <a href="{{ route('client.note',$commande->id) }}" title="Page Précédente">  <button style="margin-bottom: 20%" type="button"  class="btn btn-primary">{{ __("Réception de la commande") }}</button></a>
-                           
-                        </button>
-                            @endforeach 
+                            @endif
+                        </div>
+
 
                             <h3>Commandes passées: </h3>
-                            @foreach($commandes_fin as $commande)
-                            <li>
-                            <p>Commande du {{$commande->heure_commande}}</p>
-                                @foreach($commande->ligneCommandes as $ligne)
-                                    <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                            @if($commandes_fin->isEmpty())
+                                <p>Vous n avez pas de commandes reçues</p>
+                            @else
+                                @foreach($commandes_fin as $commande)
+
+                                <b>Commande du {{$commande->heure_commande}}</b>
+                                    @foreach($commande->ligneCommandes as $ligne)
+                                        <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                                    @endforeach
+
                                 @endforeach
-                            </li>
-                          
-                            @endforeach 
-                           
-                    </ul>
-                  
+                            @endif
 
                     </div>
                 </div>
@@ -53,5 +63,10 @@
 @endsection
 
 @section('back')
-    <a href="/coupfaim/public" title="Page Précédente"> <img style="height: 25px; margin-bottom: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
+    @if($user->role = 3)
+        <a href="/coupfaim/public/admin/client" title="Page Précédente"> <img style="height: 25px; margin-bottom: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
+
+    @else
+        <a href="/coupfaim/public" title="Page Précédente"> <img style="height: 25px; margin-bottom: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
+    @endif
 @endsection

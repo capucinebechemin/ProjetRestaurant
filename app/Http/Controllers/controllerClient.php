@@ -134,26 +134,26 @@ public function update_user(Request $request){
 
 public function note($id){
 
-    $commande_id = $id;
+    $commande = Commande::where('id',$id)->first();
     $user = \Auth::user();
-    $client = Client::where('id_user', $user->id)->first(); 
-    return view('client.note',compact('client','user','commande_id'));
+    $client = Client::where('id_user', $user->id)->first();
+
+    $commande->reception = 1;
+    $commande->save();
+
+    return view('client.note',compact('client','user','commande'));
 }
+
 public function insert_note(Request $request){
-    $request->validate([
-        'note' => 'required',
-        'avis' => 'required',
-        'id_client' => 'required',
-        'commande_id' => 'required',
-    ]);
 
     $notation = new Note();
+
     $notation->note = $request->get('note');
     $notation->avis = $request->get('avis');
     $notation->id_client = $request->get('id_client');
     $notation->commande_id = $request->get('commande_id');
-
     $notation->save();
+
 
     return redirect()->route('home');
 }

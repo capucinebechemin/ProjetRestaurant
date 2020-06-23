@@ -90,6 +90,14 @@
                         <div>
                             <img src="{{asset('storage/' . 'uploads/cart.png')}}" style="width: 40%;">
                         </div>
+
+                    @elseif(\Auth::user()->role == 3)
+                        <div class="links">
+                            <p>Bienvenue, vous êtes dans l'administration de Coup'Faim</p>
+                        </div>
+                        <div>
+                            <img src="{{asset('storage/' . 'uploads/cart.png')}}" style="width: 40%;">
+                        </div>
                     @else
                         <div class="links">
                             <p>Coup'faim fait le lien entre les restaurants et vous pour le bonheur de vos papilles !</p>

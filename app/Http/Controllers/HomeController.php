@@ -35,17 +35,17 @@ class HomeController extends Controller
             $client = Client::where('id_user', $user->id)->first();
             $commandes = Commande::where('id_client',$client->id)->where('reception', 0)->get();
             $commandes_fin = Commande::where('id_client',$client->id)->where('reception', 1)->get();
-            
 
             return view('clienthome', compact('client','user','commandes','commandes_fin'));
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();
             $plats = Plat::where('restaurateur_id',$resto->id)->where('visible',1)->get();
-            return view('restaurateurhome', compact('resto','plats'));
+            return view('restaurateurhome', compact('resto','plats', 'user'));
         }
         elseif ($user->role == '3') {
             $nbr_resto = Restaurateur::all()->count();
+            $nbr_resto -= 1;
             $nbr_commande = Commande::where('reception', 0)->count();
             $nbr_commande_fini = Commande::where('reception', 1)->count();
             $revenu = Commande::all()->count();

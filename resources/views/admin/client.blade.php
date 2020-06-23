@@ -22,22 +22,14 @@
                         </li>
                        
                     @endforeach
-                    <a href="/coupfaim/public/home" title="Page Précédente"> <img style="height: 25px" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
-                        </div>
-                        <div>
-                        
-                      
-
-
-
-
                         </div>
 
                     </div>
-
-
                 </div>
             </div>
         </div>
-    </div>
+@endsection
+
+@section('back')
+    <a href="/coupfaim/public/home" title="Page précédente"> <img style="height: 25px" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
 @endsection

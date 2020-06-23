@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Commande;
 use App\LigneCommande;
+use App\Note;
 use App\Restaurateur;
 use App\Plat;
 use App\User;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Not;
 
 class controllerAdministrateur extends Controller
 {
@@ -22,9 +24,12 @@ class controllerAdministrateur extends Controller
     }
 
     public function detail($clientid_user){
-            $user= User::where('id',$clientid_user)->first();
-            $client = Client::where('id_user', $clientid_user)->first();
-            return view('clienthome', compact('client','user'));
+        $user= User::where('id',$clientid_user)->first();
+        $client = Client::where('id_user', $clientid_user)->first();
+        $commandes = Commande::where('id_client',$client->id)->where('reception', 0)->get();
+        $commandes_fin = Commande::where('id_client',$client->id)->where('reception', 1)->get();
+
+        return view('clienthome', compact('client','user','commandes', 'commandes_fin'));
     }
 
     public function modif_vue($clientid_user){
@@ -65,6 +70,7 @@ public function suppr ($clientid_user){
     $commandes = Commande::where('id_client', $client->id)->get();
 
     foreach ($commandes as $commande){
+        $note = Note::whereHas('note_plat')->where('commande_id', '=', $commande->id)->get()->each->delete();
         $lignesCommande = LigneCommande::whereHas('commande')->where('commande_id', '=', $commande->id)->get()->each->delete();
         $commande->delete();
     }
@@ -75,14 +81,7 @@ public function suppr ($clientid_user){
 
 }
 
-
-
-
-
-
-
-
-
+//.....................................................................
 
     public function restaurateur(){
         $resto = Restaurateur::where('id', '!=', 0)->get();

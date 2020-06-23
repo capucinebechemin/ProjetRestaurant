@@ -4,7 +4,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <a href="./" title="Page Précédente"> <img style="height: 25px" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
                 <div class="modal-title">Bienvenue dans l'administation</div>
 
 
@@ -15,7 +14,7 @@
                      
                      <ul>
                             <li>
-                            <p>Nombre de restaurant : {{$nbr_resto}}</p>
+                            <p>Nombre de restaurants : {{$nbr_resto}}</p>
                             </li>
                             <li>
                             <p>Nombre de commandes passées: {{$nbr_commande_fini}}</p>
@@ -24,14 +23,13 @@
                             <p>Nombre de commandes en cours : {{$nbr_commande}}</p>
                             </li>
                             <li>
-                            <p>Revenu totale : {{$revenu}} €</p>
+                            <p>Revenu total : {{$revenu}} €</p>
                             </li>
                     </ul>
                       
-                    <a href="{{ route('admin.client') }}" title="gestion client"><button type="button" class="btn btn-secondary btn-lg">Gestion client</button></a>
+                    <a href="{{ route('admin.client') }}" title="gestion client"><button style="margin: 2%" type="button" class="btn btn-primary">Gestion clients</button></a>
                     <br>
-                   <a href="{{ route('admin.restaurateur') }}" title="gestion restaurateur"> <button type="button" class="btn btn-secondary btn-lg">Gestion restaurateur</button></a>
-
+                    <a href="{{ route('admin.restaurateur') }}" title="gestion restaurateur"> <button style="margin: 2%" type="button" class="btn btn-primary">Gestion restaurateurs</button></a>
                     <br>
 
                     
@@ -43,5 +41,8 @@
                 </div>
             </div>
         </div>
-    </div>
+@endsection
+
+@section('back')
+    <a href="./" title="Page précédente"> <img style="height: 25px" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
 @endsection
