@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Commande;
+use App\LigneCommande;
 use App\Restaurateur;
 use App\Plat;
 use App\User;
@@ -59,6 +61,14 @@ public function modif(Request $request, $clientid_user){
 public function suppr ($clientid_user){
     $client = Client::where('id_user',$clientid_user)->first();
     $user = User::where('id',$clientid_user)->first();
+
+    $commandes = Commande::where('id_client', $client->id)->get();
+
+    foreach ($commandes as $commande){
+        $lignesCommande = LigneCommande::whereHas('commande')->where('commande_id', '=', $commande->id)->get()->each->delete();
+        $commande->delete();
+    }
+
     $client->delete();
     $user->delete();
     return redirect()->route('admin.client');
@@ -75,7 +85,7 @@ public function suppr ($clientid_user){
 
 
     public function restaurateur(){
-      $resto = Restaurateur::all();
+        $resto = Restaurateur::where('id', '!=', 0)->get();
         return view('admin.restaurateur',compact('resto'));
     }
 
@@ -128,8 +138,16 @@ public function modif_resto(Request $request, $restoid_user){
 public function suppr_resto ($restoid_user){
     $resto = Restaurateur::where('id_user', $restoid_user)->first();
     $user= User::where('id',$restoid_user)->first();
-    $plat = Plat::where('restaurateur_id',$resto->id)->get();
-    $plat->each->delete();
+
+
+    $plats = Plat::where('restaurateur_id',$resto->id)->get();
+
+    foreach ($plats as $plat){
+        $plat->visible = 0;
+        $plat->restaurateur_id = 0;
+        $plat->save();
+    }
+
     $resto->delete();
     $user->delete();
     return redirect()->route('admin.restaurateur');

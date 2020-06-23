@@ -14,7 +14,7 @@
                         @foreach($client as $client)
                         
                         <li class="list-group-item">
-                            <a href="{{ route('admin.detail', $client->id_user) }}" title="{{ $client->nom }}">{{ $client->prenom }}{{ $client->nom }}</a>
+                            <a href="{{ route('admin.detail', $client->id_user) }}" title="{{ $client->nom }}">{{ $client->prenom }} {{ $client->nom }}</a>
         
                             <a href="{{ route('admin.modif_vue', $client->id_user) }}" title="Modification">/ Modification</a>
                         
