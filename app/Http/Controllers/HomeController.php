@@ -32,6 +32,9 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
 
+
+        //Redirect to the right home 1(Client) 2(Restaurateur) and 3(Admin) 
+        //with some informations given to the view.
         if ($user->role == '1'){
             $client = Client::where('id_user', $user->id)->first();
             $commandes = Commande::where('id_client',$client->id)->where('reception', 0)->get();
@@ -55,7 +58,6 @@ class HomeController extends Controller
             $revenu = Commande::all()->count();
             $revenu = $revenu *2.5;
             $resto = Restaurateur::all();
-           
             return view('home', compact('user','resto','nbr_resto','revenu','nbr_commande','nbr_commande_fini'));
         }
     }

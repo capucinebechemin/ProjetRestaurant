@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class controllerRestaurateur extends Controller
 {
     
+    //Return a View as aForm with restorer and user informations
 public function profile(){
     $user = \Auth::user();
     $resto = Restaurateur::where('id_user', $user->id)->first();
@@ -17,6 +18,7 @@ public function profile(){
     return view('restaurateur.profile',compact('resto'));
 }
 
+//Function to modify in the database the profile of restorer
 public function update(Request $request){
 
     $request->validate([
@@ -29,20 +31,15 @@ public function update(Request $request){
     $resto = Restaurateur::where('id_user', $user->id)->first();
 
     $resto->nom_restaurant = $request->get('nom');
-
     $resto->adresse_mail_contact = $request->get('mail');
     $resto->adresse = $request->get('adresse');
     $resto->id_user = $user->id;
 
     if(!is_null($request->file('logo'))) {
     $newlogo = $request->file('logo');
-
     $resto->logo = $newlogo->store('uploads', 'public');
     }
-
     $resto->save();
-
-
     return redirect()->route('home');
 
 }

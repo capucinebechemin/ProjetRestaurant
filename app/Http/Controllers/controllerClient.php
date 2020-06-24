@@ -23,6 +23,7 @@ class controllerClient extends Controller
         return view('client.profile',compact('client','user'));
     }
 
+//Initialization of the order and send informations to the view
     public function commande($id){
 
         if (\Auth::user()){
@@ -36,13 +37,13 @@ class controllerClient extends Controller
             return view('auth.login');
         }
     }
-
+//Send an order
     public function envoi_commande(Request $request){
         $user = \Auth::user();
         $client = Client::where('id_user', $user->id)->first();
        
         $heure = now();
-
+//Creation of a new order
         $commande = new Commande();
         $commande->reception = false;
         $commande->id_client = $client->id;
@@ -52,15 +53,15 @@ class controllerClient extends Controller
 
         $commande->save();
 
+        //Fill the order with lines, price and quantity
         $lacommande = Commande::where('heure_commande', $heure)->first();
-
         $tab_plat = $request->get('idplat');
         $tab_prix = $request->get('prix');
         $tab_quantite = $request->get('quantite');
 
         $prixCommande = 0;
         $i = 0;
-
+//Each new line
         foreach ($tab_quantite as $quantite){
             if ($quantite != 0){
 
@@ -78,11 +79,11 @@ class controllerClient extends Controller
             }
             $i +=1;
         }
-
+//Calculation of the price
         $prixCommande += 2.5;
         $solde = $client->solde;
         $client->solde = $solde - $prixCommande;
-
+//Send to database
         $client->save();
 
         return redirect()->route('home');
