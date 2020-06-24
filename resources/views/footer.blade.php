@@ -12,7 +12,7 @@
     text-align: center;">
 
     <div style="align-self: center;">
-        <img src="{{asset('storage/uploads/fork.PNG')}}" style="width: 40%;">
+        <img src="{{asset('storage/' . 'uploads/fork.PNG')}}" style="width: 40%;">
     </div>
     
     <div>
@@ -29,7 +29,7 @@
     </div>
 
     <div style="align-self: center;">
-        <img src="{{asset('storage/uploads/knife.PNG')}}" style="width: 40%;">
+        <img src="{{asset('storage/' . 'uploads/knife.PNG')}}" style="width: 40%;">
     </div>
     
 </div>
