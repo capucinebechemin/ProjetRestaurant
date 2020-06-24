@@ -6,7 +6,17 @@ Il s’agit d’un site de livraison de repas. Les membres connectés peuvent co
 
 ## Utilisation
 
-Avoir un serveur Wamp et Composer à jour
+Avoir un serveur Wamp ou Xamp et Composer à jour.
+La version actuelle du projet utilise une base de données MySQL héberger sur Alwaysdata.
 
-Le site sera disponible
+Le site est disponible à cette adresse mais sans les images (Hébergement via Heroku et base de données Postgresql):
+http://my-app-coupfaim.herokuapp.com/
+
+Pour accéder à la partie admin il faut se connecter avec le compte suivant:
+E-mail :admin@gmail.com
+Mot de passe : 123456789
+
+Le compte admin devrait être automatiquement créé lors des migrations.
+
+
 
