@@ -9,7 +9,7 @@
 
                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                     <div>
-                        @if($user->role = 3)
+                        @if($user->role == 3)
                         @else
                             <a href="{{ route('client.profile') }}" title="Gestion Profil"><img style="height: 50px" src="{{asset('storage/' . 'uploads/person.png')}}" alt="Gestion profil"></a>
                         @endif
@@ -63,9 +63,8 @@
 @endsection
 
 @section('back')
-    @if($user->role = 3)
+    @if($user->role == 3)
         <a href="/coupfaim/public/admin/client" title="Page Précédente"> <img style="height: 25px; margin-bottom: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
-
     @else
         <a href="/coupfaim/public" title="Page Précédente"> <img style="height: 25px; margin-bottom: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
     @endif
