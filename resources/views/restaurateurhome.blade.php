@@ -9,7 +9,7 @@
                 <div style="display: flex; flex-direction: row; justify-content: space-between">
                     <div>
                         <h2>Bienvenue cher restaurateur</h2>
-                        @if($user->role = 3)
+                        @if(\Auth::user()->role == 3)
                             <a href="{{ route('restaurateur.plat') }}" title="Ajouter un Plat"><img style="height: 50px" src="{{asset('storage/' . 'uploads/dinner.png')}}" alt="Création plat"></a>
                         @else
                             <a href="{{ route('restaurateur.profile') }}" title="Gestion Profil"><img style="height: 50px" src="{{asset('storage/' . 'uploads/person.png')}}" alt="Gestion profil"></a>
@@ -135,7 +135,7 @@
 @endsection
 
 @section('back')
-    @if($user->role = 3)
+    @if(\Auth::user()->role == 3)
         <a href="/coupfaim/public/admin/restaurateur" title="Page Précédente"> <img style="height: 25px; margin-bottom: 2%" src="{{asset('storage/' . 'uploads/undo.png')}}" alt="Back"></a>
 
     @else

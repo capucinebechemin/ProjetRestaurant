@@ -91,8 +91,11 @@ public function suppr ($clientid_user){
     public function resto($restoid_user){
         $user= User::where('id',$restoid_user)->first();
         $resto = Restaurateur::where('id_user', $restoid_user)->first();
+        $commandes = Commande::where('restaurateur_id',$resto->id)->where('reception', 0)->get();
+        $commandes_fin = Commande::where('restaurateur_id',$resto->id)->where('reception', 1)->get();
+        $note = Note::all();
         $plats = Plat::where('restaurateur_id',$resto->id)->get();
-        return view('restaurateurhome', compact('resto','user','plats'));
+        return view('restaurateurhome', compact('resto','user','plats','commandes','commandes_fin','note'));
 }
 
 
