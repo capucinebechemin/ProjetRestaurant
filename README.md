@@ -10,13 +10,30 @@ Avoir un serveur Wamp ou Xamp et Composer à jour.
 La version actuelle du projet utilise une base de données MySQL héberger sur Alwaysdata.
 
 Le site est disponible à cette adresse mais sans les images (Hébergement via Heroku et base de données Postgresql):
+
 http://my-app-coupfaim.herokuapp.com/
 
-Pour accéder à la partie admin il faut se connecter avec le compte suivant:
+Pour accéder à la partie admin il faut se connecter avec le compte suivant: 
+
 E-mail :admin@gmail.com
+
 Mot de passe : 123456789
 
 Le compte admin devrait être automatiquement créé lors des migrations.
 
+## Architecture du site
+
+Dans les grandes lignes le site ce compose de 6 parties :
+
+- La partie Client
+
+- La partie Restaurateur
+
+- La partie Administrateur
+
+- Le HomeController qui répartit les utilisateurs en fonction de leurs rôle.
+
+Le reste est principalement composée de CRUD basique et du modèle MVC (Modèle, Vue, Controller).
+Toutes les images sont stocké dans storage/uploads.
 
 
