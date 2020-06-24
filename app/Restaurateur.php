@@ -24,4 +24,8 @@ class Restaurateur extends Model
     {
         return $this->hasMany(Plat::class);
     }
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class);
+    }
 }

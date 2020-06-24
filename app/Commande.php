@@ -13,14 +13,22 @@ class Commande extends Model
     {
         return $this->belongsTo(Client::class, "id_client");
     }
+    public function restaurateur()
+    {
+        return $this->belongsTo(Restaurateur::class, "restaurateur_id");
+    }
 
     public function ligneCommandes()
     {
         return $this->hasMany(LigneCommande::class);
     }
+    public function Notes()
+    {
+        return $this->hasMany(Note::class);
+    }
   
 
     protected $fillable = [
-     'heure_commande', 'reception', 'id_client',
+     'heure_commande', 'reception', 'id_client','restaurateur_id'
     ];
 }

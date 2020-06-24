@@ -20,7 +20,7 @@
 
                         <h2>Commandes</h2>
                        
-                        <h3>Commande en cours :</h3>
+                        <h3>Commandes en cours :</h3>
                         <div style="display: flex; flex-direction: column">
                             @if($commandes->isEmpty())
                                 <p>Vous n avez pas de commandes en cours</p>

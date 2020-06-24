@@ -36,6 +36,8 @@
                             </li>
                     </ul>
                 </div>
+               
+
                 <div>
                     <h1>Vos Plats</h1>
                     <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
@@ -76,6 +78,54 @@
                         @endforeach
                     </div>
                 </div>
+
+                <div>
+        
+                       
+        <h3>Commandes en cours :</h3>
+        <div >
+            @if($commandes->isEmpty())
+                <p>Vous n avez pas de commandes en cours</p>
+            @else
+                @foreach($commandes as $commande)
+                <div>
+                    <b>Commande du {{$commande->heure_commande}}</b>
+                    @foreach($commande->ligneCommandes as $ligne)
+                        <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                    @endforeach
+
+                </div>
+                @endforeach
+            @endif
+        </div>
+        <h3>Commandes passées: </h3>
+            @if($commandes_fin->isEmpty())
+                <p>Vous n avez pas de commandes reçues</p>
+            @else
+                @foreach($commandes_fin as $commande)
+
+                <b>Commande du {{$commande->heure_commande}}</b>
+                    @foreach($commande->ligneCommandes as $ligne)
+                        <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
+                    @endforeach
+                    @foreach ($note as $note)
+                    @if($note->commande_id == $commande->id)
+            <p>Note: {{$note->note}} Avis: {{$note->avis}}</p>
+           
+           @endif
+                @endforeach
+
+        
+                  
+
+                @endforeach
+            @endif
+
+       
+
+            </div>
+
+
 
             </div>
 

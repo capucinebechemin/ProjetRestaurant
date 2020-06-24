@@ -40,13 +40,15 @@ class controllerClient extends Controller
     public function envoi_commande(Request $request){
         $user = \Auth::user();
         $client = Client::where('id_user', $user->id)->first();
-
+       
         $heure = now();
 
         $commande = new Commande();
         $commande->reception = false;
         $commande->id_client = $client->id;
         $commande->heure_commande = $heure;
+        $resto= $request->get('restaurateur_id');
+        $commande->restaurateur_id = $resto;
 
         $commande->save();
 
@@ -113,19 +115,12 @@ public function update_user(Request $request){
 
     $request->validate([
         'name' => 'required',
-        //'password' => 'required',
-        
         
     ]);
 
     $user = \Auth::user();
     $user->name = $request->get('name');
-    //$user->password = $request->get('password');
-    //$password=Hash::make($password);
-    //dd($password);
-
     $user->save();
-
 
     return redirect()->route('home');
 

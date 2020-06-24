@@ -38,6 +38,7 @@
                                             <input id="plat" name="plat[]" class="form-control" type="text" value="{{$plat->nom}}" hidden>
                                             <input id="prix" name="prix[]" class="form-control" type="text" value="{{$plat->prix}}" hidden>
                                             <input id="idplat" name="idplat[]" class="form-control" type="text" value="{{$plat->id}}" hidden>
+                                            <input id="restaurateur_id" type="hidden" name="restaurateur_id" value="{{$resto->id}}">
                                         </div>
                                     </div>
 

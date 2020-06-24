@@ -6,6 +6,7 @@ use App\Client;
 use App\Plat;
 use App\Restaurateur;
 use App\Commande;
+use App\Note;
 use App\LigneCommande;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
@@ -40,8 +41,11 @@ class HomeController extends Controller
         }
         elseif ($user->role == '2'){
             $resto = Restaurateur::where('id_user', $user->id)->first();
+            $commandes = Commande::where('restaurateur_id',$resto->id)->where('reception', 0)->get();
+            $commandes_fin = Commande::where('restaurateur_id',$resto->id)->where('reception', 1)->get();
+            $note = Note::all();
             $plats = Plat::where('restaurateur_id',$resto->id)->where('visible',1)->get();
-            return view('restaurateurhome', compact('resto','plats', 'user'));
+            return view('restaurateurhome', compact('resto','plats', 'user','commandes','commandes_fin','note'));
         }
         elseif ($user->role == '3') {
             $nbr_resto = Restaurateur::all()->count();
