@@ -12,7 +12,7 @@
     text-align: center;">
 
     <div style="align-self: center;">
-        <img src="{{asset('storage/' . 'uploads/fork.png')}}" style="width: 40%;">
+        <img src="{{asset('storage/' . 'uploads/forkk.png')}}" style="width: 40%;">
     </div>
     
     <div>
