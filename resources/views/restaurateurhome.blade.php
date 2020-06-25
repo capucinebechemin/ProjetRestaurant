@@ -108,13 +108,14 @@
                     @foreach($commande->ligneCommandes as $ligne)
                         <p>{{$ligne->quantite}} "{{$ligne->ligne_plat->nom}}" à {{$ligne->ligne_plat->prix}}€</p>
                     @endforeach
-                    @foreach ($note as $note)
-                    @if($note->commande_id == $commande->id)
-            <p>Note: {{$note->note}} Avis: {{$note->avis}}</p>
+
+
+                    @foreach ($note as $notes)
+                    @if($notes->commande_id == $commande->id)
+            <p>Note: {{$notes->note}} Avis: {{$notes->avis}}</p>
            
            @endif
                 @endforeach
-
         
                   
 
